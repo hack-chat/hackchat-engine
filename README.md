@@ -6,3 +6,5 @@ This readme will be updated soon, I don't want to get distracted, sorry. This en
 
 # Note:
 If this note is in place, it means that I've either forgotten to remove it or that this engine is currently not supported by the main server at https://hack.chat/ . The server needs to be updated still. . .
+
+For testing, use the v2 dev branch https://github.com/hack-chat/main/tree/version-2-dev
