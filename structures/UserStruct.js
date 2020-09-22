@@ -62,7 +62,7 @@ class User {
       * @legacy Will be changed to numeric levels
       * @type {string}
       */
-    this.userlevel = data.utype || 'user';
+    this.userlevel = data.uType || 'user';
 
     /**
       * Whether this user is online or offline
