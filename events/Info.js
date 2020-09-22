@@ -38,12 +38,6 @@ class Info extends AbstractEvent {
         message = new EmoteStruct(client, user, data);
         break;
       }
-      case 'invite': {
-        eventType = Events.CHANNEL_INVITE;
-        const user = client.users.find((val) => val.name === data.from);
-        message = new InviteStruct(client, user, data);
-        break;
-      }
       case 'whisper': {
         eventType = Events.CHANNEL_WHISPER;
         const user = client.users.find((val) => val.name === data.from);
