@@ -28,7 +28,7 @@ class WarningStruct {
       * Numeric reason for the warning
       * @type {number}
       */
-    this.reason = data.reason || 0;
+    this.id = data.id || 0;
 
     /**
       * Text included with warning
