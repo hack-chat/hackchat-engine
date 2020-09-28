@@ -36,6 +36,7 @@ class PacketRouter {
     this.registerEvent(WSEvents.SESSION, require('./handlers/SessionHandler'));
     this.registerEvent(WSEvents.NEW_MESSAGE, require('./handlers/ChatHandler'));
     this.registerEvent(WSEvents.CHANNEL_INFO, require('./handlers/InfoHandler'));
+    this.registerEvent(WSEvents.CHANNEL_EMOTE, require('./handlers/EmoteHandler'));
     this.registerEvent(WSEvents.CHANNEL_INVITE, require('./handlers/InviteHandler'));
     this.registerEvent(WSEvents.CHANNEL_WARN, require('./handlers/WarningHandler'));
     this.registerEvent(WSEvents.ONLINE_SET, require('./handlers/OnlineSetHandler'));
