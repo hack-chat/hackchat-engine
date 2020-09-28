@@ -104,6 +104,7 @@ exports.WSEvents = {
   SESSION: 'session',
   NEW_MESSAGE: 'chat',
   CHANNEL_INFO: 'info',
+  CHANNEL_EMOTE: 'emote',
   CHANNEL_WARN: 'warn',
   ONLINE_SET: 'onlineSet',
   USER_JOIN: 'onlineAdd',

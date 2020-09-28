@@ -15,6 +15,7 @@ class EventsManager {
     this.register(require('./Captcha'));
     this.register(require('./Chat'));
     this.register(require('./Info'));
+    this.register(require('./Emote'));
     this.register(require('./Invite'));
     this.register(require('./OnlineSet'));
     this.register(require('./UserJoin'));
