@@ -8,7 +8,6 @@ const InformationStruct = require('../structures/InformationStruct');
   * @legacy
   */
 const EmoteStruct = require('../structures/EmoteStruct');
-const InviteStruct = require('../structures/InviteStruct');
 const WhisperStruct = require('../structures/WhisperStruct');
 
 /**
@@ -23,6 +22,7 @@ class Info extends AbstractEvent {
     */
   handle(data) {
     const { client } = this;
+    let user;
     let message;
 
     /**
@@ -32,22 +32,19 @@ class Info extends AbstractEvent {
        */
     let eventType = Events.CHANNEL_INFO;
     switch (data.type) {
-      case 'emote': {
+      case 'emote':
         eventType = Events.CHANNEL_EMOTE;
-        const user = client.users.find((val) => val.name === data.nick);
+        user = client.users.find((val) => val.name === data.nick);
         message = new EmoteStruct(client, user, data);
         break;
-      }
-      case 'whisper': {
+      case 'whisper':
         eventType = Events.CHANNEL_WHISPER;
-        const user = client.users.find((val) => val.name === data.from);
+        user = client.users.find((val) => val.name === data.from);
         message = new WhisperStruct(client.channel, user, data, client);
         break;
-      }
-      default: {
+      default:
         message = new InformationStruct(client, data);
         break;
-      }
     }
 
     return {
