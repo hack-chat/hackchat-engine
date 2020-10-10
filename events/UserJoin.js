@@ -18,7 +18,7 @@ class UserJoin extends AbstractEvent {
 
     // If stored, set them to online
     if (user) {
-      user.toggleOnline();
+      user.toggleOnline(data.channel);
       return user;
     }
 

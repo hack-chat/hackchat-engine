@@ -21,6 +21,7 @@ class EventsManager {
     this.register(require('./UserJoin'));
     this.register(require('./UserLeave'));
     this.register(require('./Warning'));
+    this.register(require('./Whisper'));
   }
 
   /**

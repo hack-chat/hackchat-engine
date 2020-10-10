@@ -33,7 +33,7 @@ class CaptchaStruct {
       * The channel the captcha occured in
       * @type {string}
       */
-    this.channel = this.client.channel;
+    this.channel = data.channel;
   }
 }
 

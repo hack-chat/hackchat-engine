@@ -14,7 +14,7 @@ class UserLeave extends AbstractEvent {
     const { client } = this;
     const user = client.users.get(data.userid);
 
-    user.toggleOnline();
+    user.toggleOnline(data.channel);
 
     return user;
   }

@@ -29,7 +29,7 @@ class Information {
       * The channel the event occured in
       * @type {string}
       */
-    this.channel = this.client.channel;
+    this.channel = data.channel;
   }
 }
 

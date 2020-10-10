@@ -23,7 +23,7 @@ class OnlineSetHandler extends AbstractHandler {
       */
     client.emit(Events.ONLINE_SET, {
       client,
-      channel: client.channel,
+      channel: packet.channel,
     });
 
     client.emit('debug', `[${Events.ONLINE_SET}]: ${packet}`);

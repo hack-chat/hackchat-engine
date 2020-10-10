@@ -14,7 +14,7 @@ class Chat extends AbstractEvent {
   handle(data) {
     const { client } = this;
     const user = client.users.get(data.userid);
-    const message = new MessageStruct(data.channel, user, data, client);
+    const message = new MessageStruct(user, data, client);
     user.setLastMessage(message);
 
     return {

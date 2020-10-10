@@ -243,9 +243,11 @@ class User {
 
   /**
     * Sets this user either online or offline
+    * @param {string} channel Channel that the user joined or left
     * @returns {boolean}
     */
-  toggleOnline() {
+  // @todo Multichannel
+  toggleOnline(channel) { // eslint-disable-line no-unused-vars
     this.online = !this.online;
     return this.online;
   }

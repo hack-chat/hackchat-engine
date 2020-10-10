@@ -10,12 +10,12 @@ class WhisperStruct {
     * @param {object} data Incoming event data
     * @param {Client} client Main client reference
     */
-  constructor(channel, user, data, client) {
+  constructor(user, data, client) {
     /**
       * Channel that the whisper was sent through
       * @type {Channel}
       */
-    this.channel = channel;
+    this.channel = data.channel;
 
     /**
       * User whomst'd sent the whisper

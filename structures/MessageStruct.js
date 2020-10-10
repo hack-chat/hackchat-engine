@@ -6,12 +6,11 @@ const { OPCodes } = require('../util/Constants');
   */
 class MessageStruct {
   /**
-    * @param {Channel} channel Channel which message was sent through
     * @param {User} user User structure of sender
     * @param {object} data Incoming event data
     * @param {Client} client Main client reference
     */
-  constructor(channel, user, data, client) {
+  constructor(user, data, client) {
     /**
        * Add client reference
        * @type {Client}
@@ -23,7 +22,7 @@ class MessageStruct {
       * Channel which message was sent through
       * @type {Channel}
       */
-    this.channel = channel;
+    this.channel = data.channel;
 
     /**
       * User structure of sender

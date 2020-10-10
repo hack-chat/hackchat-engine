@@ -44,7 +44,7 @@ class WarningStruct {
       * @todo Touches multi-channel patch
       * @type {string}
       */
-    this.channel = this.client.channel;
+    this.channel = data.channel;
   }
 }
 

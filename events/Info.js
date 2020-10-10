@@ -40,7 +40,7 @@ class Info extends AbstractEvent {
       case 'whisper':
         eventType = Events.CHANNEL_WHISPER;
         user = client.users.find((val) => val.name === data.from);
-        message = new WhisperStruct(client.channel, user, data, client);
+        message = new WhisperStruct(user, data, client);
         break;
       default:
         message = new InformationStruct(client, data);
