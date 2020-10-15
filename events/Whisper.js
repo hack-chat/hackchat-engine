@@ -13,9 +13,7 @@ class Whisper extends AbstractEvent {
     */
   handle(data) {
     const { client } = this;
-
-    const user = client.users.find((val) => val.userid === data.userid);
-    const message = new WhisperStruct(user, data, client);
+    const message = new WhisperStruct(client, data);
 
     return {
       message,

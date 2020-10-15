@@ -10,19 +10,7 @@ class WhisperStruct {
     * @param {object} data Incoming event data
     * @param {Client} client Main client reference
     */
-  constructor(user, data, client) {
-    /**
-      * Channel that the whisper was sent through
-      * @type {Channel}
-      */
-    this.channel = data.channel;
-
-    /**
-      * User whomst'd sent the whisper
-      * @type {User}
-      */
-    this.user = user;
-
+  constructor(client, data) {
     /**
       * Add client reference
       * @type {Client}
@@ -39,6 +27,27 @@ class WhisperStruct {
     * @returns {void}
     */
   setup(data) {
+    /**
+      * The user who sent the whisper
+      * @type {User}
+      */
+    this.from = this.client.users.find((val) => val.userid === data.from);
+
+    /**
+      * Invite was sent by this client
+      * @type {boolean}
+      */
+    this.fromMe = false;
+    if (data.from === this.client.myUser.userid) {
+      this.fromMe = true;
+    }
+
+    /**
+      * The user who got the invite
+      * @type {User}
+      */
+    this.to = this.client.users.find((val) => val.userid === data.to);
+
     /**
       * The content of the whispered message
       * @type {string}

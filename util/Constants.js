@@ -111,4 +111,5 @@ exports.WSEvents = {
   USER_LEAVE: 'onlineRemove',
   CHANNEL_CAPTCHA: 'captcha',
   CHANNEL_INVITE: 'invite',
+  CHANNEL_WHISPER: 'whisper',
 };
