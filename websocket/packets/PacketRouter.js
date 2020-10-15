@@ -43,7 +43,7 @@ class PacketRouter {
     this.registerEvent(WSEvents.USER_JOIN, require('./handlers/UserJoinHandler'));
     this.registerEvent(WSEvents.USER_LEAVE, require('./handlers/UserLeaveHandler'));
     this.registerEvent(WSEvents.CHANNEL_CAPTCHA, require('./handlers/CaptchaHandler'));
-    this.registerEvent(WSEvents.CHANNEL_WHISPER, require('./handlers/CaptchaHandler'));
+    this.registerEvent(WSEvents.CHANNEL_WHISPER, require('./handlers/WhisperHandler'));
   }
 
   /**
