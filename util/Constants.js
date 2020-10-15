@@ -4,6 +4,7 @@
   * @property {array} [ignoredEvents] Optional array of Constants.Events types to ignore
   * @property {object} [ws] Websocket connection details
   * @property {object} [http] Browser only http path definitions
+  * @property {boolean} [isBot] Declare if this client is a bot or not
   */
 exports.DefaultOptions = {
   ignoredEvents: [],
@@ -26,6 +27,8 @@ exports.DefaultOptions = {
   http: {
     configPath: 'config.json',
   },
+
+  isBot: true,
 };
 
 /**

@@ -367,6 +367,7 @@ class SocketHandler extends EventEmitter {
 
     const payload = {
       cmd: OPCodes.SESSION,
+      isBot: this.client.options.isBot,
     };
 
     return this.send(payload);
@@ -386,6 +387,7 @@ class SocketHandler extends EventEmitter {
 
     const payload = {
       cmd: OPCodes.SESSION,
+      isBot: this.client.options.isBot,
       id: this.sessionID,
     };
 
