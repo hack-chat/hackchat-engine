@@ -1,5 +1,5 @@
-const AbstractEvent = require('./AbstractEvent');
-const WarningStruct = require('../structures/WarningStruct');
+import AbstractEvent from './AbstractEvent.js';
+import WarningStruct from '../structures/WarningStruct.js';
 
 /**
   * This class handles an incoming `warning` event from the server
@@ -21,4 +21,4 @@ class Warning extends AbstractEvent {
   }
 }
 
-module.exports = Warning;
+export default Warning;

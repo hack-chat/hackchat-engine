@@ -52,4 +52,4 @@ class SessionStruct {
   }
 }
 
-module.exports = SessionStruct;
+export default SessionStruct;

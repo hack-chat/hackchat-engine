@@ -1,4 +1,4 @@
-const { OPCodes } = require('../util/Constants');
+import { OPCodes } from '../util/Constants.js';
 
 /**
   * This class handles parsing of the data of a `chat` event and
@@ -97,4 +97,4 @@ class MessageStruct {
   }
 }
 
-module.exports = MessageStruct;
+export default MessageStruct;

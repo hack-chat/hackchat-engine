@@ -54,4 +54,4 @@ class Invite {
   }
 }
 
-module.exports = Invite;
+export default Invite;

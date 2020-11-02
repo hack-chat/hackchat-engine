@@ -1,35 +1,64 @@
 {
-  "name": "hackchat-engine",
-  "version": "1.0.9",
+  "_from": "hackchat-engine@^1.0.9",
+  "_id": "hackchat-engine@1.0.9",
+  "_inBundle": false,
+  "_integrity": "sha512-uxyU4HBAs8L4hQktdtvTP/3drbJHQvjkeQDdonglAffHIPtZ1pgU9W/ScNXNCFEyqDAo/QSVikfXp0wMmLtzeQ==",
+  "_location": "/hackchat-engine",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "hackchat-engine@^1.0.9",
+    "name": "hackchat-engine",
+    "escapedName": "hackchat-engine",
+    "rawSpec": "^1.0.9",
+    "saveSpec": null,
+    "fetchSpec": "^1.0.9"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/hackchat-engine/-/hackchat-engine-1.0.9.tgz",
+  "_shasum": "536ea142dbfca44d3853c5767b7797c303642cdb",
+  "_spec": "hackchat-engine@^1.0.9",
+  "_where": "C:\\Users\\Owner\\Documents\\GitHub\\hcClientBeta",
+  "author": {
+    "name": "Marzavec"
+  },
+  "bugs": {
+    "url": "https://github.com/hack-chat/hackchat-engine/issues"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "node-fetch": "^2.6.0",
+    "ws": "^7.2.0"
+  },
+  "deprecated": false,
   "description": "hack.chat chat engine",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ignore-path .gitignore .",
-    "lintfix": "eslint --fix --ignore-path .gitignore ."
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hack-chat/hackchat-engine.git"
-  },
+  "homepage": "https://github.com/hack-chat/hackchat-engine#readme",
   "keywords": [
     "hack.chat",
     "chat",
     "client"
   ],
-  "author": "Marzavec",
+  "type": "module",
   "license": "WTFPL",
-  "bugs": {
-    "url": "https://github.com/hack-chat/hackchat-engine/issues"
+  "main": "index.js",
+  "name": "hackchat-engine",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hack-chat/hackchat-engine.git"
   },
-  "homepage": "https://github.com/hack-chat/hackchat-engine#readme",
-  "devDependencies": {
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2"
+  "scripts": {
+    "lint": "eslint --ignore-path .gitignore .",
+    "lintfix": "eslint --fix --ignore-path .gitignore .",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "dependencies": {
-    "node-fetch": "^2.6.0",
-    "ws": "^7.2.0"
-  }
+  "version": "1.0.9"
 }

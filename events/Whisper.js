@@ -1,5 +1,5 @@
-const AbstractEvent = require('./AbstractEvent');
-const WhisperStruct = require('../structures/WhisperStruct');
+import AbstractEvent from './AbstractEvent.js';
+import WhisperStruct from '../structures/WhisperStruct.js';
 
 /**
   * This class handles an incoming `whisper` event from the server
@@ -21,4 +21,4 @@ class Whisper extends AbstractEvent {
   }
 }
 
-module.exports = Whisper;
+export default Whisper;

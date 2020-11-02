@@ -1,6 +1,6 @@
-const AbstractEvent = require('./AbstractEvent');
-const ClientStruct = require('../structures/ClientStruct');
-const UserStruct = require('../structures/UserStruct');
+import AbstractEvent from './AbstractEvent.js';
+import ClientStruct from '../structures/ClientStruct.js';
+import UserStruct from '../structures/UserStruct.js';
 
 /**
   * This class handles an incoming `onlineSet` event from the server
@@ -34,4 +34,4 @@ class OnlineSet extends AbstractEvent {
   }
 }
 
-module.exports = OnlineSet;
+export default OnlineSet;

@@ -1,5 +1,5 @@
-const AbstractEvent = require('./AbstractEvent');
-const InformationStruct = require('../structures/InformationStruct');
+import AbstractEvent from './AbstractEvent.js';
+import InformationStruct from '../structures/InformationStruct.js';
 
 /**
   * This class handles an incoming `info` event from the server
@@ -21,4 +21,4 @@ class Info extends AbstractEvent {
   }
 }
 
-module.exports = Info;
+export default Info;

@@ -1,5 +1,5 @@
-const AbstractHandler = require('./AbstractHandler');
-const { Events } = require('../../../util/Constants');
+import AbstractHandler from './AbstractHandler.js';
+import { Events } from '../../../util/Constants.js';
 
 /**
   * Handles the data when a new user joins
@@ -24,4 +24,4 @@ class UserJoinHandler extends AbstractHandler {
   }
 }
 
-module.exports = UserJoinHandler;
+export default UserJoinHandler;

@@ -37,4 +37,4 @@ class CaptchaStruct {
   }
 }
 
-module.exports = CaptchaStruct;
+export default CaptchaStruct;

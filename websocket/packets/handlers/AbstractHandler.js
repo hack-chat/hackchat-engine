@@ -20,4 +20,4 @@ class AbstractHandler {
   }
 }
 
-module.exports = AbstractHandler;
+export default AbstractHandler;

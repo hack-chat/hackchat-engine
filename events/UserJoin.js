@@ -1,5 +1,5 @@
-const AbstractEvent = require('./AbstractEvent');
-const User = require('../structures/UserStruct');
+import AbstractEvent from './AbstractEvent.js';
+import User from '../structures/UserStruct.js';
 
 /**
   * This class handles an incoming `join` event from the server
@@ -29,4 +29,4 @@ class UserJoin extends AbstractEvent {
   }
 }
 
-module.exports = UserJoin;
+export default UserJoin;

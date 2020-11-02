@@ -1,5 +1,17 @@
 /* eslint global-require: 0 */
-const { Status, WSEvents } = require('../../util/Constants');
+import { Status, WSEvents } from '../../util/Constants.js';
+
+import SessionHandler from './handlers/SessionHandler.js';
+import ChatHandler from './handlers/ChatHandler.js';
+import InfoHandler from './handlers/InfoHandler.js';
+import EmoteHandler from './handlers/EmoteHandler.js';
+import InviteHandler from './handlers/InviteHandler.js';
+import WarningHandler from './handlers/WarningHandler.js';
+import OnlineSetHandler from './handlers/OnlineSetHandler.js';
+import UserJoinHandler from './handlers/UserJoinHandler.js';
+import UserLeaveHandler from './handlers/UserLeaveHandler.js';
+import CaptchaHandler from './handlers/CaptchaHandler.js';
+import WhisperHandler from './handlers/WhisperHandler.js';
 
 const BeforeReadyWhitelist = [
   WSEvents.SESSION,
@@ -33,17 +45,17 @@ class PacketRouter {
     this.queue = [];
 
     // Register all events
-    this.registerEvent(WSEvents.SESSION, require('./handlers/SessionHandler'));
-    this.registerEvent(WSEvents.NEW_MESSAGE, require('./handlers/ChatHandler'));
-    this.registerEvent(WSEvents.CHANNEL_INFO, require('./handlers/InfoHandler'));
-    this.registerEvent(WSEvents.CHANNEL_EMOTE, require('./handlers/EmoteHandler'));
-    this.registerEvent(WSEvents.CHANNEL_INVITE, require('./handlers/InviteHandler'));
-    this.registerEvent(WSEvents.CHANNEL_WARN, require('./handlers/WarningHandler'));
-    this.registerEvent(WSEvents.ONLINE_SET, require('./handlers/OnlineSetHandler'));
-    this.registerEvent(WSEvents.USER_JOIN, require('./handlers/UserJoinHandler'));
-    this.registerEvent(WSEvents.USER_LEAVE, require('./handlers/UserLeaveHandler'));
-    this.registerEvent(WSEvents.CHANNEL_CAPTCHA, require('./handlers/CaptchaHandler'));
-    this.registerEvent(WSEvents.CHANNEL_WHISPER, require('./handlers/WhisperHandler'));
+    this.registerEvent(WSEvents.SESSION, SessionHandler);
+    this.registerEvent(WSEvents.NEW_MESSAGE, ChatHandler);
+    this.registerEvent(WSEvents.CHANNEL_INFO, InfoHandler);
+    this.registerEvent(WSEvents.CHANNEL_EMOTE, EmoteHandler);
+    this.registerEvent(WSEvents.CHANNEL_INVITE, InviteHandler);
+    this.registerEvent(WSEvents.CHANNEL_WARN, WarningHandler);
+    this.registerEvent(WSEvents.ONLINE_SET, OnlineSetHandler);
+    this.registerEvent(WSEvents.USER_JOIN, UserJoinHandler);
+    this.registerEvent(WSEvents.USER_LEAVE, UserLeaveHandler);
+    this.registerEvent(WSEvents.CHANNEL_CAPTCHA, CaptchaHandler);
+    this.registerEvent(WSEvents.CHANNEL_WHISPER, WhisperHandler);
   }
 
   /**
@@ -98,4 +110,4 @@ class PacketRouter {
   }
 }
 
-module.exports = PacketRouter;
+export default PacketRouter;

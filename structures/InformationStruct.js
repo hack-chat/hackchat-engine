@@ -33,4 +33,4 @@ class Information {
   }
 }
 
-module.exports = Information;
+export default Information;

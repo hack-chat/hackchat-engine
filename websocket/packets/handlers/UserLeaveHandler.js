@@ -1,5 +1,5 @@
-const AbstractHandler = require('./AbstractHandler');
-const { Events } = require('../../../util/Constants');
+import AbstractHandler from './AbstractHandler.js';
+import { Events } from '../../../util/Constants.js';
 
 /**
   * Handles the data when a user leaves a channel
@@ -24,4 +24,4 @@ class UserLeaveHandler extends AbstractHandler {
   }
 }
 
-module.exports = UserLeaveHandler;
+export default UserLeaveHandler;

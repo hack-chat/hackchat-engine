@@ -1,4 +1,4 @@
-const { OPCodes } = require('../util/Constants');
+import { OPCodes } from '../util/Constants.js';
 
 /**
   * This class handles parsing of the data of a `whisper` event
@@ -100,4 +100,4 @@ class WhisperStruct {
   }
 }
 
-module.exports = WhisperStruct;
+export default WhisperStruct;

@@ -78,4 +78,4 @@ class ExtMap extends Map {
   }
 }
 
-module.exports = ExtMap;
+export default ExtMap;

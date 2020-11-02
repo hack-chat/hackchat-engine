@@ -1,6 +1,6 @@
-const { EventEmitter } = require('events');
-const { Status } = require('../util/Constants');
-const SocketHandler = require('./SocketHandler');
+import EventEmitter from 'events';
+import { Status } from '../util/Constants.js';
+import SocketHandler from './SocketHandler.js';
 
 /**
   * WebSocket Controller for the client interface
@@ -87,4 +87,4 @@ class SocketController extends EventEmitter {
   }
 }
 
-module.exports = SocketController;
+export default SocketController;

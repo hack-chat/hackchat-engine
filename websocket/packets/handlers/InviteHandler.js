@@ -1,5 +1,5 @@
-const AbstractHandler = require('./AbstractHandler');
-const { Events } = require('../../../util/Constants');
+import AbstractHandler from './AbstractHandler.js';
+import { Events } from '../../../util/Constants.js';
 
 /**
   * Handles an invite packet received from the server
@@ -24,4 +24,4 @@ class InviteHandler extends AbstractHandler {
   }
 }
 
-module.exports = InviteHandler;
+export default InviteHandler;

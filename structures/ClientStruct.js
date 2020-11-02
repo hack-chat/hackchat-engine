@@ -1,5 +1,5 @@
-const User = require('./UserStruct');
-const { OPCodes } = require('../util/Constants');
+import User from './UserStruct.js';
+import { OPCodes } from '../util/Constants.js';
 
 /**
   * Extends UserStruct class adding properties and functions unique
@@ -50,4 +50,4 @@ class ClientStruct extends User {
   }
 }
 
-module.exports = ClientStruct;
+export default ClientStruct;

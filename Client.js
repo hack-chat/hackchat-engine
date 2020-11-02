@@ -1,15 +1,16 @@
-const EventEmitter = require('events');
-
-const {
+import EventEmitter from 'events';
+import {
   DefaultOptions,
   Events,
   Errors,
   OPCodes,
-} = require('./util/Constants');
-const Util = require('./util/Util');
-const SocketController = require('./websocket/SocketController');
-const EventsManager = require('./events/EventsManager');
-const ExtMap = require('./util/ExtMap');
+} from './util/Constants.js';
+import Util from './util/Util.js';
+import SocketController from './websocket/SocketController.js';
+import EventsManager from './events/EventsManager.js';
+import ExtMap from './util/ExtMap.js';
+
+const util = new Util();
 
 /**
   * Main client interface
@@ -26,7 +27,10 @@ class Client extends EventEmitter {
       * Merge passed options with defaults and store
       * @type {object}
       */
-    this.options = Util.mergeDefault(DefaultOptions, options);
+    this.options = {
+      ...DefaultOptions,
+      ...options,
+    };
 
     /**
       * Create the websocket manager for this client
@@ -179,7 +183,7 @@ class Client extends EventEmitter {
 
         if (this.browser) {
           this.emit(Events.DEBUG, '[client] Fetching ws config');
-          const conf = await Util.fetchWebsocketConfig();
+          const conf = await util.fetchWebsocketConfig();
           gateway = conf.gateway;
         }
 
@@ -320,4 +324,4 @@ class Client extends EventEmitter {
   }
 }
 
-module.exports = Client;
+export default Client;

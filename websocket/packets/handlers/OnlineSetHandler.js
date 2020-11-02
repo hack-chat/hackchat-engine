@@ -1,5 +1,5 @@
-const AbstractHandler = require('./AbstractHandler');
-const { Events } = require('../../../util/Constants');
+import AbstractHandler from './AbstractHandler.js';
+import { Events } from '../../../util/Constants.js';
 
 /**
   * Handles the data sent when joining a channel
@@ -30,4 +30,4 @@ class OnlineSetHandler extends AbstractHandler {
   }
 }
 
-module.exports = OnlineSetHandler;
+export default OnlineSetHandler;

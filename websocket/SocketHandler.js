@@ -1,10 +1,11 @@
-const EventEmitter = require('events');
+import EventEmitter from 'events';
+import Ws from 'ws';
+
+import { Status, Events, OPCodes } from '../util/Constants.js';
+import PacketRouter from './packets/PacketRouter.js';
 
 const browser = typeof window !== 'undefined';
-const WebSocket = browser ? window.WebSocket : require('ws');
-
-const { Status, Events, OPCodes } = require('../util/Constants');
-const PacketRouter = require('./packets/PacketRouter');
+const WebSocket = browser ? window.WebSocket : Ws;
 
 /**
   * Handles websocket events
@@ -397,4 +398,4 @@ class SocketHandler extends EventEmitter {
 
 SocketHandler.WebSocket = WebSocket;
 
-module.exports = SocketHandler;
+export default SocketHandler;

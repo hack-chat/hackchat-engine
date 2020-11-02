@@ -1,5 +1,5 @@
-const AbstractEvent = require('./AbstractEvent');
-const MessageStruct = require('../structures/MessageStruct');
+import AbstractEvent from './AbstractEvent.js';
+import MessageStruct from '../structures/MessageStruct.js';
 
 /**
   * This class handles an incoming `chat` event from the server
@@ -23,4 +23,4 @@ class Chat extends AbstractEvent {
   }
 }
 
-module.exports = Chat;
+export default Chat;

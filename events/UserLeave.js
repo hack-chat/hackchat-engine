@@ -1,4 +1,4 @@
-const AbstractEvent = require('./AbstractEvent');
+import AbstractEvent from './AbstractEvent.js';
 
 /**
   * This class handles an incoming `leave` event from the server
@@ -20,4 +20,4 @@ class UserLeave extends AbstractEvent {
   }
 }
 
-module.exports = UserLeave;
+export default UserLeave;

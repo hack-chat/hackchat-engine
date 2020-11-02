@@ -48,4 +48,4 @@ class WarningStruct {
   }
 }
 
-module.exports = WarningStruct;
+export default WarningStruct;

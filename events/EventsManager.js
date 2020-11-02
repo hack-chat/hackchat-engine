@@ -1,4 +1,14 @@
-/* eslint global-require: 0 */
+import Session from './Session.js';
+import Captcha from './Captcha.js';
+import Chat from './Chat.js';
+import Info from './Info.js';
+import Emote from './Emote.js';
+import Invite from './Invite.js';
+import OnlineSet from './OnlineSet.js';
+import UserJoin from './UserJoin.js';
+import UserLeave from './UserLeave.js';
+import Warning from './Warning.js';
+import Whisper from './Whisper.js';
 
 /**
   * This class routes incoming event data to it's proper handler
@@ -11,27 +21,18 @@ class EventsManager {
   constructor(client) {
     this.client = client;
 
-    this.register(require('./Session'));
-    this.register(require('./Captcha'));
-    this.register(require('./Chat'));
-    this.register(require('./Info'));
-    this.register(require('./Emote'));
-    this.register(require('./Invite'));
-    this.register(require('./OnlineSet'));
-    this.register(require('./UserJoin'));
-    this.register(require('./UserLeave'));
-    this.register(require('./Warning'));
-    this.register(require('./Whisper'));
-  }
-
-  /**
-    * Register a new event handler
-    * @param {AbstractEvent} AbstractEvent Target event handler module
-    * @returns {void}
-    */
-  register(AbstractEvent) {
-    this[AbstractEvent.name] = new AbstractEvent(this.client);
+    this.Session = new Session(this.client);
+    this.Captcha = new Captcha(this.client);
+    this.Chat = new Chat(this.client);
+    this.Info = new Info(this.client);
+    this.Emote = new Emote(this.client);
+    this.Invite = new Invite(this.client);
+    this.OnlineSet = new OnlineSet(this.client);
+    this.UserJoin = new UserJoin(this.client);
+    this.UserLeave = new UserLeave(this.client);
+    this.Warning = new Warning(this.client);
+    this.Whisper = new Whisper(this.client);
   }
 }
 
-module.exports = EventsManager;
+export default EventsManager;

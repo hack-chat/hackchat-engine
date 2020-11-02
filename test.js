@@ -1,13 +1,14 @@
 /* eslint no-console: 0 */
-const Client = require('./Client');
+import Client from './Client.js';
 
 const testName = 'testBot';
 const testPass = 'testBot';
-const testChannel = 'test';
+const testChannel = 'programming';
 
 const hcClient = new Client({
   ws: {
-    gateway: 'ws://127.0.0.1:6060/',
+    // gateway: 'ws://127.0.0.1:6060/',
+    gateway: 'ws://157.230.220.235:6060/',
   },
   debug: true,
 });

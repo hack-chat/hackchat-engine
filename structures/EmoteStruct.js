@@ -40,4 +40,4 @@ class Emote {
   }
 }
 
-module.exports = Emote;
+export default Emote;

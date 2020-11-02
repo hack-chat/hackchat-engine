@@ -1,3 +1,2 @@
-module.exports = {
-  Client: require('./Client'), // eslint-disable-line global-require
-};
+// eslint-disable-next-line import/prefer-default-export
+export { default as Client } from './Client.js';

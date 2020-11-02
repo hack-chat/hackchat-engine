@@ -6,7 +6,7 @@
   * @property {object} [http] Browser only http path definitions
   * @property {boolean} [isBot] Declare if this client is a bot or not
   */
-exports.DefaultOptions = {
+export const DefaultOptions = {
   ignoredEvents: [],
   restTimeOffset: 500,
 
@@ -35,7 +35,7 @@ exports.DefaultOptions = {
   * Typical client errors
   * @typedef {string} Errors
   */
-exports.Errors = {
+export const Errors = {
   TOOK_TOO_LONG: 'Getting ready took too long. . .',
   INVALID_NAME: 'Nickname must consist of up to 24 letters, numbers, and underscores',
   INVALID_CHANNEL: 'Invalid channel',
@@ -45,7 +45,7 @@ exports.Errors = {
   * Current client connection phase
   * @typedef {number} Status
   */
-exports.Status = {
+export const Status = {
   READY: 0,
   CONNECTING: 1,
   IDLE: 2,
@@ -56,7 +56,7 @@ exports.Status = {
   * Remote operations to execute through the websocket
   * @typedef {string} OPCodes
   */
-exports.OPCodes = {
+export const OPCodes = {
   SESSION: 'session',
   JOIN: 'join',
   CHAT: 'chat',
@@ -77,7 +77,7 @@ exports.OPCodes = {
   * Emitted client event names
   * @typedef {string} Events
   */
-exports.Events = {
+export const Events = {
   CONNECTED: 'connected',
   SESSION: 'session',
   NEW_MESSAGE: 'message',
@@ -103,7 +103,7 @@ exports.Events = {
   * Incoming websocket events
   * @typedef {string} WSEventType
   */
-exports.WSEvents = {
+export const WSEvents = {
   SESSION: 'session',
   NEW_MESSAGE: 'chat',
   CHANNEL_INFO: 'info',

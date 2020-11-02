@@ -22,4 +22,4 @@ class AbstractEvent {
   }
 }
 
-module.exports = AbstractEvent;
+export default AbstractEvent;

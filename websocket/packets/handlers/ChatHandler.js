@@ -1,5 +1,5 @@
-const AbstractHandler = require('./AbstractHandler');
-const { Events } = require('../../../util/Constants');
+import AbstractHandler from './AbstractHandler.js';
+import { Events } from '../../../util/Constants.js';
 
 /**
   * Handles a new chat message that has been broadcast within a channel
@@ -24,4 +24,4 @@ class ChatHandler extends AbstractHandler {
   }
 }
 
-module.exports = ChatHandler;
+export default ChatHandler;

@@ -1,5 +1,5 @@
-const AbstractEvent = require('./AbstractEvent');
-const EmoteStruct = require('../structures/EmoteStruct');
+import AbstractEvent from './AbstractEvent.js';
+import EmoteStruct from '../structures/EmoteStruct.js';
 
 /**
   * This class handles an incoming `emote` event from the server
@@ -23,4 +23,4 @@ class Emote extends AbstractEvent {
   }
 }
 
-module.exports = Emote;
+export default Emote;

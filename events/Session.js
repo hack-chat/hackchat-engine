@@ -1,5 +1,5 @@
-const AbstractEvent = require('./AbstractEvent');
-const SessionStruct = require('../structures/SessionStruct');
+import AbstractEvent from './AbstractEvent.js';
+import SessionStruct from '../structures/SessionStruct.js';
 
 /**
   * This class handles an incoming `session` event from the server
@@ -22,4 +22,4 @@ class Session extends AbstractEvent {
   }
 }
 
-module.exports = Session;
+export default Session;

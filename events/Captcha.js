@@ -1,5 +1,5 @@
-const AbstractEvent = require('./AbstractEvent');
-const CaptchaStruct = require('../structures/CaptchaStruct');
+import AbstractEvent from './AbstractEvent.js';
+import CaptchaStruct from '../structures/CaptchaStruct.js';
 
 /**
   * This class handles an incoming `captcha` event from the server
@@ -20,4 +20,4 @@ class Captcha extends AbstractEvent {
   }
 }
 
-module.exports = Captcha;
+export default Captcha;

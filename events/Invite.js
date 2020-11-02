@@ -1,5 +1,5 @@
-const AbstractEvent = require('./AbstractEvent');
-const InviteStruct = require('../structures/InviteStruct');
+import AbstractEvent from './AbstractEvent.js';
+import InviteStruct from '../structures/InviteStruct.js';
 
 /**
   * This class handles an incoming `invite` event from the server
@@ -21,4 +21,4 @@ class Invite extends AbstractEvent {
   }
 }
 
-module.exports = Invite;
+export default Invite;

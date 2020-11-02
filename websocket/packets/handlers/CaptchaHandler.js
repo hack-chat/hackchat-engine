@@ -1,5 +1,5 @@
-const AbstractHandler = require('./AbstractHandler');
-const { Events } = require('../../../util/Constants');
+import AbstractHandler from './AbstractHandler.js';
+import { Events } from '../../../util/Constants.js';
 
 /**
   * Handles a captcha received while attempting to join a channel
@@ -24,4 +24,4 @@ class CaptchaHandler extends AbstractHandler {
   }
 }
 
-module.exports = CaptchaHandler;
+export default CaptchaHandler;

@@ -1,5 +1,5 @@
-const AbstractHandler = require('./AbstractHandler');
-const { Events } = require('../../../util/Constants');
+import AbstractHandler from './AbstractHandler.js';
+import { Events } from '../../../util/Constants.js';
 
 /**
   * Handles the data from warnings sent by the server
@@ -24,4 +24,4 @@ class WarningHandler extends AbstractHandler {
   }
 }
 
-module.exports = WarningHandler;
+export default WarningHandler;
