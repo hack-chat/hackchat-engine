@@ -7,6 +7,7 @@ import Invite from './Invite.js';
 import OnlineSet from './OnlineSet.js';
 import UserJoin from './UserJoin.js';
 import UserLeave from './UserLeave.js';
+import UpdateUser from './UpdateUser.js';
 import Warning from './Warning.js';
 import Whisper from './Whisper.js';
 
@@ -30,6 +31,7 @@ class EventsManager {
     this.OnlineSet = new OnlineSet(this.client);
     this.UserJoin = new UserJoin(this.client);
     this.UserLeave = new UserLeave(this.client);
+    this.UpdateUser = new UpdateUser(this.client);
     this.Warning = new Warning(this.client);
     this.Whisper = new Whisper(this.client);
   }

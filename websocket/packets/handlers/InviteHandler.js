@@ -21,6 +21,9 @@ class InviteHandler extends AbstractHandler {
       * @param {Invite} message The created message
       */
     client.emit(Events.CHANNEL_INVITE, response.message);
+
+    // Emit debug info
+    client.emit(Events.DEBUG, `[${Events.CHANNEL_INVITE}]: ${packet}`);
   }
 }
 

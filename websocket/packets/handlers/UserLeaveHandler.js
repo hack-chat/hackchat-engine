@@ -21,6 +21,9 @@ class UserLeaveHandler extends AbstractHandler {
       * @param {User} user The user who left
       */
     client.emit(Events.USER_LEAVE, response);
+
+    // Emit debug info
+    client.emit(Events.DEBUG, `[${Events.USER_LEAVE}]: ${packet}`);
   }
 }
 

@@ -59,7 +59,6 @@ class User {
 
     /**
       * This users uType (user, mod, admin)
-      * @legacy Will be changed to numeric levels
       * @type {string}
       */
     this.userlevel = data.uType || 'user';
@@ -96,10 +95,22 @@ class User {
     this.blocked = false;
 
     /**
-      * Is this the current connects user record
+      * Is this the current users record
       * @type {boolean}
       */
     this.mine = data.isme || false;
+
+    /**
+      * User's color
+      * @type {string}
+      */
+    this.nickColor = data.color || false;
+
+    /**
+      * Numeric permission level
+      * @type {number}
+      */
+    this.permissionLevel = data.level || false;
   }
 
   /**
@@ -222,23 +233,34 @@ class User {
   }
 
   /**
-    * Updates this user's name
-    * @param {string} newName This user's new name
-    * @returns {string}
+    * User's color
+    * @type {string}
+    * @readonly
     */
-  updateName(newName) {
-    this.username = newName;
-    return this.username;
+  get color() {
+    return this.nickColor;
   }
 
   /**
-    * Updates this user's level
-    * @param {number} newLvl This user's new level
-    * @returns {number}
+    * User's permission level
+    * @type {string}
+    * @readonly
     */
-  updateLevel(newLvl) {
-    this.userlevel = newLvl;
-    return this.userlevel;
+  get perms() {
+    return this.permissionLevel;
+  }
+
+  /**
+    * Patch new user info sent from server
+    * @param {object} data User object sent from server
+    * @type {string}
+    */
+  updateUser(data) {
+    this.username = data.nick;
+    this.userlevel = data.uType;
+    this.bot = data.isBot;
+    this.nickColor = data.color;
+    this.permissionLevel = data.level;
   }
 
   /**
@@ -281,7 +303,7 @@ class User {
       return new Promise((resolve) => {
         this.client.ws.send({
           cmd: OPCodes.CHAT,
-          channel: this.channel,
+          channel: this.channel, // @todo Multichannel
           text,
         });
         resolve(this);
@@ -302,7 +324,7 @@ class User {
       return new Promise((resolve) => {
         this.client.ws.send({
           cmd: OPCodes.WHISPER,
-          channel: this.channel,
+          channel: this.channel, // @todo Multichannel
           userid: this.userid,
           text,
         });

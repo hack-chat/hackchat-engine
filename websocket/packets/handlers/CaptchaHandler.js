@@ -21,6 +21,9 @@ class CaptchaHandler extends AbstractHandler {
       * @param {Captcha} captcha The captcha data
       */
     client.emit(Events.CHANNEL_CAPTCHA, response);
+
+    // Emit debug info
+    client.emit(Events.DEBUG, `[${Events.CHANNEL_CAPTCHA}]: ${packet}`);
   }
 }
 

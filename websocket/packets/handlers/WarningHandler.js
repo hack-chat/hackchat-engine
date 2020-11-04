@@ -21,6 +21,9 @@ class WarningHandler extends AbstractHandler {
       * @param {Warning} warning The sent warning
       */
     client.emit(Events.CHANNEL_WARN, response.warn);
+
+    // Emit debug info
+    client.emit(Events.DEBUG, `[${Events.CHANNEL_WARN}]: ${packet}`);
   }
 }
 

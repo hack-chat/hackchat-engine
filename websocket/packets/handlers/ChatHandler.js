@@ -21,6 +21,9 @@ class ChatHandler extends AbstractHandler {
       * @param {MessageStruct} message The sent message
       */
     client.emit(Events.NEW_MESSAGE, response.message);
+
+    // Emit debug info
+    client.emit(Events.DEBUG, `[${Events.NEW_MESSAGE}]: ${packet}`);
   }
 }
 

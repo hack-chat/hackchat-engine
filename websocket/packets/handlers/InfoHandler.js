@@ -21,6 +21,9 @@ class InfoHandler extends AbstractHandler {
       * @param {Information} message The created message
       */
     client.emit(Events.CHANNEL_INFO, response.message);
+
+    // Emit debug info
+    client.emit(Events.DEBUG, `[${Events.CHANNEL_INFO}]: ${packet}`);
   }
 }
 

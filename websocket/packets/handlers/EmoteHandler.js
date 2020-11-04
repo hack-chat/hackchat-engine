@@ -21,6 +21,9 @@ class EmoteHandler extends AbstractHandler {
       * @param {Emote} message The created message
       */
     client.emit(Events.CHANNEL_EMOTE, response.message);
+
+    // Emit debug info
+    client.emit(Events.DEBUG, `[${Events.CHANNEL_EMOTE}]: ${packet}`);
   }
 }
 

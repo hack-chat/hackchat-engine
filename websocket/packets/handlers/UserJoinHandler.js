@@ -21,6 +21,9 @@ class UserJoinHandler extends AbstractHandler {
       * @param {User} user The new user
       */
     client.emit(Events.USER_JOIN, response);
+
+    // Emit debug info
+    client.emit(Events.DEBUG, `[${Events.USER_JOIN}]: ${packet}`);
   }
 }
 

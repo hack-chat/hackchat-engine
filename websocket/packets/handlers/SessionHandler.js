@@ -32,6 +32,9 @@ class SessionHandler extends AbstractHandler {
       * @param {SessionStruct} session Full session details
       */
     client.emit(Events.SESSION, response.session);
+
+    // Emit debug info
+    client.emit(Events.DEBUG, `[${Events.SESSION}]: ${packet}`);
   }
 }
 

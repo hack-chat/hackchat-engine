@@ -10,6 +10,7 @@ import WarningHandler from './handlers/WarningHandler.js';
 import OnlineSetHandler from './handlers/OnlineSetHandler.js';
 import UserJoinHandler from './handlers/UserJoinHandler.js';
 import UserLeaveHandler from './handlers/UserLeaveHandler.js';
+import UpdateUserHandler from './handlers/UpdateUserHandler.js';
 import CaptchaHandler from './handlers/CaptchaHandler.js';
 import WhisperHandler from './handlers/WhisperHandler.js';
 
@@ -54,6 +55,7 @@ class PacketRouter {
     this.registerEvent(WSEvents.ONLINE_SET, OnlineSetHandler);
     this.registerEvent(WSEvents.USER_JOIN, UserJoinHandler);
     this.registerEvent(WSEvents.USER_LEAVE, UserLeaveHandler);
+    this.registerEvent(WSEvents.USER_UPDATE, UpdateUserHandler);
     this.registerEvent(WSEvents.CHANNEL_CAPTCHA, CaptchaHandler);
     this.registerEvent(WSEvents.CHANNEL_WHISPER, WhisperHandler);
   }

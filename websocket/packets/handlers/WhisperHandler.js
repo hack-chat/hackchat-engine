@@ -21,6 +21,9 @@ class WhisperHandler extends AbstractHandler {
       * @param {WhisperStruct} message The whisper event
       */
     client.emit(Events.CHANNEL_WHISPER, response.message);
+
+    // Emit debug info
+    client.emit(Events.DEBUG, `[${Events.CHANNEL_WHISPER}]: ${packet}`);
   }
 }
 
