@@ -7,8 +7,7 @@ const testChannel = 'programming';
 
 const hcClient = new Client({
   ws: {
-    // gateway: 'ws://127.0.0.1:6060/',
-    gateway: 'ws://157.230.220.235:6060/',
+    gateway: 'ws://127.0.0.1:6060/',
   },
   debug: true,
 });
