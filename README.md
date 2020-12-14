@@ -2,9 +2,47 @@
 
 A NodeJS and browser friendly JavaScript library used to interact with a hackchat server.
 
-This readme will be updated soon, I don't want to get distracted, sorry. This engine is used in the saga of the CommunicationProvider container of the version 2 client. An example can also be found in the test.js file of this repo.
+# Installation
 
-# Note:
-If this note is in place, it means that I've either forgotten to remove it or that this engine is currently not supported by the main server at https://hack.chat/ . The server needs to be updated still. . .
+## Prerequisites
 
-For testing, use the v2 dev branch https://github.com/hack-chat/main/tree/version-2-dev
+- [node.js 14.15](https://nodejs.org/en/download/package-manager/) or higher
+- [npm 6](https://nodejs.org/en/download/package-manager/) or higher
+
+## Install
+
+`npm i hackchat-engine`
+
+# Usage
+
+## Minimum Usage
+
+```javascript
+  const { Client } = require('hackchat-engine');
+  const hcClient = new Client();
+
+  const testName = 'testBot';
+  const testPass = 'testBot';
+  const testChannel = 'programming';
+
+  hcClient.on('connected', () => console.log('Connected!'));
+
+  hcClient.on('session', (payload) => {
+    console.log(payload);
+    hcClient.join(testName, testPass, testChannel);
+  });
+
+  hcClient.on('channelJoined', (payload) => {
+    console.log(payload);
+    hcClient.say(testChannel, 'Bep boop i r bot');
+  });
+
+  hcClient.on('message', (payload) => {
+    console.log(payload);
+    hcClient.say(testChannel, 'No u');
+  });
+```
+
+## Advanced Usage
+
+** Need to update this **
