@@ -45,4 +45,16 @@ A NodeJS and browser friendly JavaScript library used to interact with a hackcha
 
 ## Advanced Usage
 
-** Need to update this **
+** Need to update this, still **
+
+### Changing the connection
+
+By default, this engine will connect to 'wss://hack.chat/chat-ws'. To change this, add a `ws.gateway` property to the `options` object, for example:
+
+```javascript
+const hcClient = new Client({
+  ws: {
+    gateway: 'ws://1.1.1.1:6060/',
+  }
+});
+```
