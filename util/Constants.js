@@ -29,6 +29,7 @@ export const DefaultOptions = {
   },
 
   isBot: true,
+  session: false,
 };
 
 /**

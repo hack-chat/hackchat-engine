@@ -16,7 +16,7 @@ class SocketHandler extends EventEmitter {
     * @param {SocketController} controller Controller of this handler
     * @param {string} gateway Target gateway address to connect to
     */
-  constructor(controller, gateway) {
+  constructor(controller, gateway, session) {
     super();
 
     /**
@@ -80,7 +80,7 @@ class SocketHandler extends EventEmitter {
       * Current session id
       * @type {string}
       */
-    this.sessionID = '';
+    this.sessionID = session;
 
     /**
       * Store new client session id when assigned
@@ -389,7 +389,7 @@ class SocketHandler extends EventEmitter {
     const payload = {
       cmd: OPCodes.SESSION,
       isBot: this.client.options.isBot,
-      id: this.sessionID,
+      token: this.sessionID,
     };
 
     return this.send(payload);
