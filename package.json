@@ -1,6 +1,5 @@
 {
   "_from": "hackchat-engine@^1.0.9",
-  "_id": "hackchat-engine@1.0.9",
   "_inBundle": false,
   "_integrity": "sha512-uxyU4HBAs8L4hQktdtvTP/3drbJHQvjkeQDdonglAffHIPtZ1pgU9W/ScNXNCFEyqDAo/QSVikfXp0wMmLtzeQ==",
   "_location": "/hackchat-engine",
@@ -60,5 +59,5 @@
     "lintfix": "eslint --fix --ignore-path .gitignore .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "version": "1.1.2"
+  "version": "1.1.3"
 }
