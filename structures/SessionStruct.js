@@ -49,6 +49,14 @@ class SessionStruct {
       * @type {boolean}
       */
     this.restored = data.restored;
+
+    // add non-standard properties
+    const dataKeys = Object.keys(data);
+    for (let i = 0, j = dataKeys.length; i < j; i++) {
+      if (dataKeys[i] !== 'cmd' && dataKeys[i] !== 'time') {
+        this[dataKeys[i]] = data[dataKeys[i]];
+      }
+    }
   }
 }
 
