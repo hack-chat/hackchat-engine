@@ -66,7 +66,7 @@ class SocketController extends EventEmitter {
     */
   connect(gateway) {
     if (!this.connection) {
-      this.connection = new SocketHandler(this, gateway, this.client.session);
+      this.connection = new SocketHandler(this, gateway, this.client.options.session);
       return true;
     }
 
