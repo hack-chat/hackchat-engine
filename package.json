@@ -28,7 +28,7 @@
   "bugs": {
     "url": "https://github.com/hack-chat/hackchat-engine/issues"
   },
-  "bundleDependencies": false,
+  "bundleDependencies": [],
   "dependencies": {
     "node-fetch": "^2.6.0",
     "ws": "^7.2.0"
