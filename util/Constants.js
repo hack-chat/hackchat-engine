@@ -63,6 +63,7 @@ export const OPCodes = {
   CHAT: 'chat',
   INVITE: 'invite',
   CHANGE_NICK: 'changenick',
+  CHANGE_COLOR: 'changecolor',
   KICK: 'kick',
   BAN: 'ban',
   MUTE: 'muzzle',

@@ -52,7 +52,7 @@ class SessionStruct {
 
     // add non-standard properties
     const dataKeys = Object.keys(data);
-    for (let i = 0, j = dataKeys.length; i < j; i++) {
+    for (let i = 0, j = dataKeys.length; i < j; i += 1) {
       if (dataKeys[i] !== 'cmd' && dataKeys[i] !== 'time') {
         this[dataKeys[i]] = data[dataKeys[i]];
       }

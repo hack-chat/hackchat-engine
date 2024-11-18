@@ -137,7 +137,7 @@ class Client extends EventEmitter {
     * Sends a join event to the hackchat server
     * @param {string} name Name to join with
     * @param {string} password Optional password to create trip code
-    * @param {string} channel Cchannel to auto join
+    * @param {string} channel Channel to auto join
     * @returns {void}
     */
   join(name = false, password = '', channel = false) {
@@ -264,6 +264,17 @@ class Client extends EventEmitter {
   clearInterval(interval) {
     clearInterval(interval);
     this.intervals.delete(interval);
+  }
+
+  /**
+    * Send `changecolor` operation to the server
+    * @param {string} newColor HTML color code
+    */
+  changeColor(newColor) {
+    this.ws.send({
+      cmd: OPCodes.CHANGE_COLOR,
+      color: newColor,
+    });
   }
 
   /**
