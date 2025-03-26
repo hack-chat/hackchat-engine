@@ -10,6 +10,8 @@ import UserLeave from './UserLeave.js';
 import UpdateUser from './UpdateUser.js';
 import Warning from './Warning.js';
 import Whisper from './Whisper.js';
+import PublicChannels from './PublicChannels.js';
+import HackAttempt from './HackAttempt.js';
 
 /**
   * This class routes incoming event data to it's proper handler
@@ -34,6 +36,8 @@ class EventsManager {
     this.UpdateUser = new UpdateUser(this.client);
     this.Warning = new Warning(this.client);
     this.Whisper = new Whisper(this.client);
+    this.PublicChannels = new PublicChannels(this.client);
+    this.HackAttempt = new HackAttempt(this.client);
   }
 }
 

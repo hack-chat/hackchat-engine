@@ -16,7 +16,7 @@ class EmoteHandler extends AbstractHandler {
     const response = client.events.Emote.handle(packet);
 
     /**
-      * Emitted when the client recives an emote packet
+      * Emitted when the client receives an emote packet
       * @event Client#emote
       * @param {Emote} message The created message
       */

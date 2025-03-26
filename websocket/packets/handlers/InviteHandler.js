@@ -16,7 +16,7 @@ class InviteHandler extends AbstractHandler {
     const response = client.events.Invite.handle(packet);
 
     /**
-      * Emitted when the client recives an invite packet
+      * Emitted when the client receives an invite packet
       * @event Client#invite
       * @param {Invite} message The created message
       */

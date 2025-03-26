@@ -100,6 +100,8 @@ export const Events = {
   ERROR: 'error',
   WARN: 'warn',
   DEBUG: 'debug',
+  PUB_CHANS: 'publicchannels',
+  HACK_ATTEMPT: 'hackAttempt',
 };
 
 /**
@@ -108,6 +110,7 @@ export const Events = {
   */
 export const WSEvents = {
   SESSION: 'session',
+  PUB_CHANS: 'publicchannels',
   NEW_MESSAGE: 'chat',
   CHANNEL_INFO: 'info',
   CHANNEL_EMOTE: 'emote',
@@ -119,4 +122,5 @@ export const WSEvents = {
   CHANNEL_CAPTCHA: 'captcha',
   CHANNEL_INVITE: 'invite',
   CHANNEL_WHISPER: 'whisper',
+  HACK_ATTEMPT: 'hackAttempt',
 };

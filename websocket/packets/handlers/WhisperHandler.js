@@ -16,7 +16,7 @@ class WhisperHandler extends AbstractHandler {
     const response = client.events.Whisper.handle(packet);
 
     /**
-      * Emitted when the client recives a whisper packet
+      * Emitted when the client receives a whisper packet
       * @event Client#whisper
       * @param {WhisperStruct} message The whisper event
       */

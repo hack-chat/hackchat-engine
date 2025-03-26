@@ -16,7 +16,7 @@ class InfoHandler extends AbstractHandler {
     const response = client.events.Info.handle(packet);
 
     /**
-      * Emitted when the client recives an info packet
+      * Emitted when the client receives an info packet
       * @event Client#information
       * @param {Information} message The created message
       */

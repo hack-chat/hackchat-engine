@@ -13,9 +13,12 @@ import UserLeaveHandler from './handlers/UserLeaveHandler.js';
 import UpdateUserHandler from './handlers/UpdateUserHandler.js';
 import CaptchaHandler from './handlers/CaptchaHandler.js';
 import WhisperHandler from './handlers/WhisperHandler.js';
+import PubChannelsHandler from './handlers/PubChannelsHandler.js';
+import HackAttemptHandler from './handlers/HackAttemptHandler.js';
 
 const BeforeReadyWhitelist = [
   WSEvents.SESSION,
+  WSEvents.PUB_CHANS,
 ];
 
 /**
@@ -58,6 +61,8 @@ class PacketRouter {
     this.registerEvent(WSEvents.USER_UPDATE, UpdateUserHandler);
     this.registerEvent(WSEvents.CHANNEL_CAPTCHA, CaptchaHandler);
     this.registerEvent(WSEvents.CHANNEL_WHISPER, WhisperHandler);
+    this.registerEvent(WSEvents.PUB_CHANS, PubChannelsHandler);
+    this.registerEvent(WSEvents.HACK_ATTEMPT, HackAttemptHandler);
   }
 
   /**
