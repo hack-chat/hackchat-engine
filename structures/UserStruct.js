@@ -107,6 +107,12 @@ class User {
     this.nickColor = data.color || false;
 
     /**
+      * User's color
+      * @type {string}
+      */
+    this.flair = data.flair || '';
+
+    /**
       * Numeric permission level
       * @type {number}
       */
@@ -260,6 +266,7 @@ class User {
     this.userlevel = data.uType;
     this.bot = data.isBot;
     this.nickColor = data.color;
+    this.flair = data.flair;
     this.permissionLevel = data.level;
   }
 
