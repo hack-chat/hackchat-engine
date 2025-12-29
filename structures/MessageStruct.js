@@ -62,7 +62,7 @@ class MessageStruct {
   }
 
   /**
-    * Reply to the message.
+    * Reply to the message
     * @param {string} text The content for the message
     * @returns {Promise}
     * @example

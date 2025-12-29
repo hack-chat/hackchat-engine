@@ -1,5 +1,9 @@
 /* eslint global-require: 0 */
-import { Status, WSEvents } from '../../util/Constants.js';
+import {
+  Status,
+  WSEvents,
+  Events,
+} from '../../util/Constants.js';
 
 import SessionHandler from './handlers/SessionHandler.js';
 import ChatHandler from './handlers/ChatHandler.js';
@@ -15,6 +19,8 @@ import CaptchaHandler from './handlers/CaptchaHandler.js';
 import WhisperHandler from './handlers/WhisperHandler.js';
 import PubChannelsHandler from './handlers/PubChannelsHandler.js';
 import HackAttemptHandler from './handlers/HackAttemptHandler.js';
+import SignMessageHandler from './handlers/SignMessageHandler.js';
+import SignTransactionHandler from './handlers/SignTransactionHandler.js';
 
 const BeforeReadyWhitelist = [
   WSEvents.SESSION,
@@ -48,6 +54,12 @@ class PacketRouter {
       */
     this.queue = [];
 
+    /**
+      * Custom handlers registered by the user for unmapped commands
+      * @type {Map<string, function(object): void>}
+      */
+    this.customHandlers = new Map();
+
     // Register all events
     this.registerEvent(WSEvents.SESSION, SessionHandler);
     this.registerEvent(WSEvents.NEW_MESSAGE, ChatHandler);
@@ -63,6 +75,8 @@ class PacketRouter {
     this.registerEvent(WSEvents.CHANNEL_WHISPER, WhisperHandler);
     this.registerEvent(WSEvents.PUB_CHANS, PubChannelsHandler);
     this.registerEvent(WSEvents.HACK_ATTEMPT, HackAttemptHandler);
+    this.registerEvent(WSEvents.SIGN_MESSAGE, SignMessageHandler);
+    this.registerEvent(WSEvents.SIGN_TRANSACTION, SignTransactionHandler);
   }
 
   /**
@@ -72,6 +86,15 @@ class PacketRouter {
     */
   get client() {
     return this.ws.client;
+  }
+
+  /**
+    * Registers a custom command handler
+    * @param {string} cmd The command string
+    * @param {function(object): void} handler The function to execute
+    */
+  registerCustomCommand(cmd, handler) {
+    this.customHandlers.set(cmd, handler);
   }
 
   /**
@@ -112,7 +135,17 @@ class PacketRouter {
     }
 
     if (!queue && this.queue.length > 0) this.processQueue();
+
     if (this.handlers[packet.cmd]) return this.handlers[packet.cmd].handle(packet);
+
+    const customHandler = this.customHandlers.get(packet.cmd);
+    if (customHandler) {
+      this.client.emit(Events.DEBUG, `[router] Executing custom handler for cmd: ${packet.cmd}`);
+      customHandler(packet);
+
+      return true;
+    }
+
     return false;
   }
 }

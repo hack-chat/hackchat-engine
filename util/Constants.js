@@ -73,6 +73,9 @@ export const OPCodes = {
   LOCK_ROOM: 'lockroom',
   UNLOCK_ROOM: 'unlockroom',
   WHISPER: 'whisper',
+  REQUEST_SIW: 'siw',
+  SIGN_SIW: 'signsiw',
+  CONFIRM_TX: 'confirmtx',
 };
 
 /**
@@ -102,6 +105,8 @@ export const Events = {
   DEBUG: 'debug',
   PUB_CHANS: 'publicchannels',
   HACK_ATTEMPT: 'hackAttempt',
+  SIGN_MESSAGE: 'signMessage',
+  SIGN_TRANSACTION: 'signTransaction',
 };
 
 /**
@@ -123,4 +128,6 @@ export const WSEvents = {
   CHANNEL_INVITE: 'invite',
   CHANNEL_WHISPER: 'whisper',
   HACK_ATTEMPT: 'hackAttempt',
+  SIGN_MESSAGE: 'signMessage',
+  SIGN_TRANSACTION: 'signTransaction',
 };
