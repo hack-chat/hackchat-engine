@@ -12,6 +12,8 @@ import Warning from './Warning.js';
 import Whisper from './Whisper.js';
 import PublicChannels from './PublicChannels.js';
 import HackAttempt from './HackAttempt.js';
+import SignMessage from './SignMessage.js';
+import SignTransaction from './SignTransaction.js';
 
 /**
   * This class routes incoming event data to it's proper handler
@@ -38,6 +40,8 @@ class EventsManager {
     this.Whisper = new Whisper(this.client);
     this.PublicChannels = new PublicChannels(this.client);
     this.HackAttempt = new HackAttempt(this.client);
+    this.SignMessage = new SignMessage(this.client);
+    this.SignTransaction = new SignTransaction(this.client);
   }
 }
 

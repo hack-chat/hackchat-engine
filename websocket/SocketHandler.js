@@ -168,6 +168,11 @@ class SocketHandler extends EventEmitter {
     * @returns {void}
     */
   send(data) {
+    if (this.packetQueue.queue.length > 500) {
+      this.debug('Packet queue full, dropping message');
+      return;
+    }
+
     if (!this.ws || this.ws.readyState !== WebSocket.OPEN) {
       this.debug(`[socket handler] No connection, failed to send: ${data}`);
       return;
@@ -189,7 +194,7 @@ class SocketHandler extends EventEmitter {
       this.client.setTimeout(() => {
         this.connect(gateway, 0, force);
       },
-      after);
+        after);
 
       return false;
     }
@@ -221,7 +226,7 @@ class SocketHandler extends EventEmitter {
   }
 
   /**
-    * Destroys the connection.
+    * Destroys the connection
     * @returns {boolean}
     */
   destroy() {
@@ -290,9 +295,9 @@ class SocketHandler extends EventEmitter {
     this.debug(`[socket handler] Connected to gateway ${this.gateway}`);
 
     /**
-       * Emitted when websocket has been connected
-       * @event Client#connected
-       */
+      * Emitted when websocket has been connected
+      * @event Client#connected
+      */
     this.client.emit(Events.CONNECTED, this.client);
 
     this.sessionStart();
@@ -337,7 +342,7 @@ class SocketHandler extends EventEmitter {
       this.closeExpected = false;
 
       /**
-        * Emitted when the client's WebSocket disconnects and will no longer attempt to reconnect.
+        * Emitted when the client's WebSocket disconnects and will no longer attempt to reconnect
         * @event Client#disconnect
         * @param {CloseEvent} event Close event
         */
