@@ -46,6 +46,12 @@ class MessageStruct {
     this.content = data.text;
 
     /**
+      * ID of message
+      * @type {string}
+      */
+    this.id = data.customId || data.id;
+
+    /**
       * Creation timestamp
       * @type {number}
       */
