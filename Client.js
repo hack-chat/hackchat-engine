@@ -186,7 +186,8 @@ class Client extends EventEmitter {
 
           const success = this.ws.connect(gw);
           if (!success) {
-            return reject(new Error('Connection failed to start (Socket likely not IDLE)'));
+            reject(new Error('Connection failed to start (Socket likely not IDLE)'));
+            return;
           }
 
           this.ws.connection.once('error', reject);
@@ -410,7 +411,8 @@ class Client extends EventEmitter {
     * Send `updateMessage` operation to the server
     * @param {string} customId The customId of the target message
     * @param {string} text The text to apply
-    * @param {string} [mode='overwrite'] The update mode: 'overwrite', 'append', 'prepend', or 'complete'
+    * @param {string} [mode='overwrite'] The update mode:
+    *   'overwrite', 'append', 'prepend', or 'complete'
     */
   updateMessage(customId, text, mode = 'overwrite') {
     this.ws.send({
@@ -420,6 +422,25 @@ class Client extends EventEmitter {
       text,
       mode,
     });
+  }
+
+  /**
+    * Request the public wallet address of a specific user
+    * @param {number|string} target The userid (number) or nickname (string) of the user
+    */
+  getWallet(target) {
+    const payload = {
+      cmd: OPCodes.GET_WALLET,
+      channel: this.channel, // @todo Multichannel
+    };
+
+    if (typeof target === 'number') {
+      payload.userid = target;
+    } else {
+      payload.nick = target;
+    }
+
+    this.ws.send(payload);
   }
 }
 

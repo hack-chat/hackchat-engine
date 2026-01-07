@@ -14,6 +14,8 @@ import PublicChannels from './PublicChannels.js';
 import HackAttempt from './HackAttempt.js';
 import SignMessage from './SignMessage.js';
 import SignTransaction from './SignTransaction.js';
+import UpdateMessage from './UpdateMessage.js';
+import WalletInfo from './WalletInfo.js';
 
 /**
   * This class routes incoming event data to it's proper handler
@@ -43,6 +45,7 @@ class EventsManager {
     this.SignMessage = new SignMessage(this.client);
     this.SignTransaction = new SignTransaction(this.client);
     this.UpdateMessage = new UpdateMessage(this.client);
+    this.WalletInfo = new WalletInfo(this.client);
   }
 }
 

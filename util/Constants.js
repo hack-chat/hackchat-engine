@@ -77,6 +77,7 @@ export const OPCodes = {
   SIGN_SIW: 'signsiw',
   CONFIRM_TX: 'confirmtx',
   UPDATE_MESSAGE: 'updateMessage',
+  GET_WALLET: 'getwallet',
 };
 
 /**
@@ -108,6 +109,7 @@ export const Events = {
   HACK_ATTEMPT: 'hackAttempt',
   SIGN_MESSAGE: 'signMessage',
   SIGN_TRANSACTION: 'signTransaction',
+  WALLET_INFO: 'walletInfo',
 };
 
 /**
@@ -132,4 +134,5 @@ export const WSEvents = {
   SIGN_MESSAGE: 'signMessage',
   SIGN_TRANSACTION: 'signTransaction',
   UPDATE_MESSAGE: 'updateMessage',
+  WALLET_INFO: 'walletInfo',
 };
