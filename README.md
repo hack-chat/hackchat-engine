@@ -110,7 +110,7 @@ The client extends `EventEmitter`. You can listen for the following events:
 | `emote` | `EmoteStruct` | A user sent a `/me` emote. |
 | `warning` | `WarningStruct` | Server sent a warning (e.g., rate limit). |
 | `gotCaptcha` | `CaptchaStruct` | Server requires a captcha solution. |
-| `hackAttempt` | `HackAttemptStruct` | A user attempted a disallowed action (admin alerts). |
+| `hackAttempt` | `HackAttemptStruct` | A client upgrade request attempt. |
 | `updateMessage` | `UpdateMessageStruct` | A previously sent message was edited or deleted. |
 
 ---
