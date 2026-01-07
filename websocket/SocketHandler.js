@@ -194,7 +194,7 @@ class SocketHandler extends EventEmitter {
       this.client.setTimeout(() => {
         this.connect(gateway, 0, force);
       },
-        after);
+      after);
 
       return false;
     }
