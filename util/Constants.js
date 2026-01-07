@@ -109,6 +109,7 @@ export const Events = {
   HACK_ATTEMPT: 'hackAttempt',
   SIGN_MESSAGE: 'signMessage',
   SIGN_TRANSACTION: 'signTransaction',
+  UPDATE_MESSAGE: 'updateMessage',
   WALLET_INFO: 'walletInfo',
 };
 
