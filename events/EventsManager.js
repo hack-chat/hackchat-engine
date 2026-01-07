@@ -42,6 +42,7 @@ class EventsManager {
     this.HackAttempt = new HackAttempt(this.client);
     this.SignMessage = new SignMessage(this.client);
     this.SignTransaction = new SignTransaction(this.client);
+    this.UpdateMessage = new UpdateMessage(this.client);
   }
 }
 

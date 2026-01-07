@@ -58,7 +58,7 @@ class HackAttemptStruct {
     this.lib = data.lib;
 
     /**
-      * The timestamp the publicchannels was sent at
+      * The timestamp the hackattempt was sent at
       * @type {number}
       */
     this.timestamp = new Date();
