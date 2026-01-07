@@ -76,6 +76,7 @@ export const OPCodes = {
   REQUEST_SIW: 'siw',
   SIGN_SIW: 'signsiw',
   CONFIRM_TX: 'confirmtx',
+  UPDATE_MESSAGE: 'updateMessage',
 };
 
 /**
@@ -130,4 +131,5 @@ export const WSEvents = {
   HACK_ATTEMPT: 'hackAttempt',
   SIGN_MESSAGE: 'signMessage',
   SIGN_TRANSACTION: 'signTransaction',
+  UPDATE_MESSAGE: 'updateMessage',
 };

@@ -5,7 +5,7 @@ import HackAttemptStruct from '../structures/HackAttemptStruct.js';
   * This class handles an incoming `hackattempt` event from the server
   * @private
   */
-class PublicChannels extends AbstractEvent {
+class HackAttempt extends AbstractEvent {
   /**
     * Event handler function
     * @param {object} data Incoming event data
@@ -21,4 +21,4 @@ class PublicChannels extends AbstractEvent {
   }
 }
 
-export default PublicChannels;
+export default HackAttempt;

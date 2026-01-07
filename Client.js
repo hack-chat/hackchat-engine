@@ -405,6 +405,22 @@ class Client extends EventEmitter {
       signedTransaction,
     });
   }
+
+  /**
+    * Send `updateMessage` operation to the server
+    * @param {string} customId The customId of the target message
+    * @param {string} text The text to apply
+    * @param {string} [mode='overwrite'] The update mode: 'overwrite', 'append', 'prepend', or 'complete'
+    */
+  updateMessage(customId, text, mode = 'overwrite') {
+    this.ws.send({
+      cmd: OPCodes.UPDATE_MESSAGE,
+      channel: this.channel, // @todo Multichannel
+      customId,
+      text,
+      mode,
+    });
+  }
 }
 
 export default Client;

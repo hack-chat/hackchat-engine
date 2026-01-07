@@ -21,6 +21,7 @@ import PubChannelsHandler from './handlers/PubChannelsHandler.js';
 import HackAttemptHandler from './handlers/HackAttemptHandler.js';
 import SignMessageHandler from './handlers/SignMessageHandler.js';
 import SignTransactionHandler from './handlers/SignTransactionHandler.js';
+import UpdateMessageHandler from './handlers/UpdateMessageHandler.js';
 
 const BeforeReadyWhitelist = [
   WSEvents.SESSION,
@@ -77,6 +78,7 @@ class PacketRouter {
     this.registerEvent(WSEvents.HACK_ATTEMPT, HackAttemptHandler);
     this.registerEvent(WSEvents.SIGN_MESSAGE, SignMessageHandler);
     this.registerEvent(WSEvents.SIGN_TRANSACTION, SignTransactionHandler);
+    this.registerEvent(WSEvents.UPDATE_MESSAGE, UpdateMessageHandler);
   }
 
   /**
