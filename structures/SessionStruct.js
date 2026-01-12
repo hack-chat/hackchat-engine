@@ -21,28 +21,10 @@ class SessionStruct {
     */
   setup(data) {
     /**
-      * Current channel count
-      * @type {number}
-      */
-    this.channelCount = data.chans;
-
-    /**
-      * Available public channels and their user count
+      * Currently connected channels
       * @type {object}
       */
-    this.publicChannels = data.public;
-
-    /**
-      * Current session id
-      * @type {string}
-      */
-    this.sessionID = data.sessionID;
-
-    /**
-      * Current channel count
-      * @type {number}
-      */
-    this.userCount = data.users;
+    this.channels = data.channels;
 
     /**
       * Was this a new or renewed session
@@ -50,13 +32,11 @@ class SessionStruct {
       */
     this.restored = data.restored;
 
-    // add non-standard properties
-    const dataKeys = Object.keys(data);
-    for (let i = 0, j = dataKeys.length; i < j; i += 1) {
-      if (dataKeys[i] !== 'cmd' && dataKeys[i] !== 'time') {
-        this[dataKeys[i]] = data[dataKeys[i]];
-      }
-    }
+    /**
+      * The new token
+      * @type {string}
+      */
+    this.token = data.token;
   }
 }
 

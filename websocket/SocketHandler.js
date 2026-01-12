@@ -85,9 +85,9 @@ class SocketHandler extends EventEmitter {
     /**
       * Store new client session id when assigned
       */
-    this.client.on(Events.SESSION, (data) => {
-      this.sessionID = data.sessionID;
-    });
+    this.client.on(Events.SESSION, (data) =>
+      this.sessionID = data.token,
+    );
 
     // Initiate connection
     this.connect(gateway);
