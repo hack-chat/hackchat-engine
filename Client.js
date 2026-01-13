@@ -442,6 +442,17 @@ class Client extends EventEmitter {
 
     this.ws.send(payload);
   }
+
+  /**
+    * Unsubscribe from a channel
+    * @param {string} channel The channel to leave
+    */
+  leave(channel) {
+    this.ws.send({
+      cmd: OPCodes.LEAVE,
+      channel: channel || this.channel, // @todo Multichannel
+    });
+  }
 }
 
 export default Client;

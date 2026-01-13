@@ -60,6 +60,7 @@ export const Status = {
 export const OPCodes = {
   SESSION: 'session',
   JOIN: 'join',
+  LEAVE: 'leave',
   CHAT: 'chat',
   INVITE: 'invite',
   CHANGE_NICK: 'changenick',
