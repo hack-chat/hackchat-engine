@@ -1,6 +1,5 @@
 /**
   * This class handles parsing of the data of a `session` event
-  * @todo Implement session restore
   */
 class SessionStruct {
   constructor(client, data) {

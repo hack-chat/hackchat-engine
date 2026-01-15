@@ -71,10 +71,9 @@ class User {
 
     /**
       * Whether or not the user is a bot
-      * @todo
       * @type {boolean}
       */
-    this.bot = data.isBot || false;
+    this.isBot = data.isBot || false;
 
     /**
       * The Message object of the last message sent by the user, if one was sent
@@ -167,7 +166,6 @@ class User {
   /**
     * User level , returns 'user', 'mod', 'admin'
     * @type {number}
-    * @todo Change from string to numeric levels
     * @readonly
     */
   get level() {
@@ -186,11 +184,10 @@ class User {
   /**
     * Bot status
     * @type {boolean}
-    * @todo
     * @readonly
     */
   get isBot() {
-    return this.bot;
+    return this.isBot;
   }
 
   /**
@@ -264,7 +261,7 @@ class User {
   updateUser(data) {
     this.username = data.nick;
     this.userlevel = data.uType;
-    this.bot = data.isBot;
+    this.isBot = data.isBot;
     this.nickColor = data.color;
     this.flair = data.flair;
     this.permissionLevel = data.level;
@@ -323,7 +320,6 @@ class User {
   /**
     * Send a whisper through this users channel to the user
     * @param {string} text Text to send
-    * @todo Finish whisper functions on server
     * @returns {Promise}
     */
   sendWhisper(text) {

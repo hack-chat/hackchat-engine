@@ -1,6 +1,5 @@
 /**
   * This class handles parsing of the data of a `warning` event
-  * @todo Warnings will be numeric events in the future
   */
 class WarningStruct {
   /**
@@ -32,8 +31,6 @@ class WarningStruct {
 
     /**
       * Text included with warning
-      * @todo Common warnings will be made integer based to allow i18n
-      * This will be removed
       * @legacy
       * @type {string}
       */

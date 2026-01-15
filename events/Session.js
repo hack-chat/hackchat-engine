@@ -3,7 +3,6 @@ import SessionStruct from '../structures/SessionStruct.js';
 
 /**
   * This class handles an incoming `session` event from the server
-  * @todo Implement session restore
   * @private
   */
 class Session extends AbstractEvent {
