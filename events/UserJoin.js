@@ -13,17 +13,17 @@ class UserJoin extends AbstractEvent {
     */
   handle(data) {
     const { client } = this;
-    // Check if user is already stored
     const user = client.users.get(data.userid);
 
-    // If stored, set them to online
     if (user) {
-      user.toggleOnline(data.channel);
+      user.channels.add(data.channel);
+      user.online = true;
+      user.channel = data.channel;
       return user;
     }
 
-    // If not, then add them to the records
     const newUser = new User(client, data);
+    newUser.channel = data.channel;
     client.users.set(data.userid, newUser);
     return newUser;
   }

@@ -28,6 +28,12 @@ class WhisperStruct {
     */
   setup(data) {
     /**
+      * The channel the event occured in
+      * @type {User}
+      */
+    this.channel = data.channel;
+
+    /**
       * The user who sent the whisper
       * @type {User}
       */

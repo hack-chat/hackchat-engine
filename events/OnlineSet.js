@@ -4,8 +4,6 @@ import UserStruct from '../structures/UserStruct.js';
 
 /**
   * This class handles an incoming `onlineSet` event from the server
-  * @todo Change user handling for multi-channel patch. What if we removed
-  * this event entirely and funneled everything through the `join` event?
   * @private
   */
 class OnlineSet extends AbstractEvent {
@@ -16,20 +14,39 @@ class OnlineSet extends AbstractEvent {
     */
   handle(data) {
     const { client } = this;
+    const incomingChannel = data.channel;
 
-    /**
-      * Patch user array into online users
-      * @todo This will be changed with the multi-channel patch
-      * @legacy
-      */
-    data.users.map((userData) => {
+    data.users.forEach((userData) => {
       if (userData.isme) {
         if (!client.myUser) {
+          // eslint-disable-next-line no-param-reassign
+          userData.channel = incomingChannel;
           client.myUser = new ClientStruct(client, userData);
+        } else {
+          if (client.myUser.channels) {
+            client.myUser.channels.add(incomingChannel);
+          }
+
+          client.myUser.updateUser(userData);
         }
       }
 
-      return client.users.set(userData.userid, new UserStruct(client, userData));
+      const existingUser = client.users.get(userData.userid);
+
+      if (existingUser) {
+        if (existingUser.channels) {
+          existingUser.channels.add(incomingChannel);
+        }
+
+        existingUser.updateUser(userData);
+        existingUser.online = true;
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        userData.channel = incomingChannel;
+
+        const newUser = new UserStruct(client, userData);
+        client.users.set(userData.userid, newUser);
+      }
     });
   }
 }

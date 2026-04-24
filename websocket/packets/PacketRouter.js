@@ -26,6 +26,7 @@ import WalletInfoHandler from './handlers/WalletInfoHandler.js';
 
 const BeforeReadyWhitelist = [
   WSEvents.SESSION,
+  WSEvents.ONLINE_SET,
   WSEvents.PUB_CHANS,
 ];
 
@@ -116,10 +117,12 @@ class PacketRouter {
     * @returns {void}
     */
   processQueue() {
-    this.queue.forEach((element, index) => {
-      this.route(this.queue[index], true);
-      this.queue.splice(index, 1);
-    });
+    while (this.queue.length > 0) {
+      const packet = this.queue.shift();
+      if (packet) {
+        this.route(packet, true);
+      }
+    }
   }
 
   /**

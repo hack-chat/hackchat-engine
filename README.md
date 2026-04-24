@@ -23,50 +23,43 @@ npm install hackchat-engine
 This library uses **ES Modules**. You must use `import` syntax.
 
 ```javascript
-import { Client } from 'hackchat-engine';
+import { Client, Events } from 'hackchat-engine';
 
 const botName = 'MyBot';
 const botPass = 'secretPassword';
 const channel = 'programming';
 
-// Initialize the client
+// initialize the client
 const client = new Client({
-  debug: true
+  debug: false,
 });
 
-// Triggered when the WebSocket connects to the gateway
-client.on('connected', () => {
-  console.log('Connected to server!');
-  client.ws.send({ cmd: 'getchannels' });
+// triggered when the server establishes a session
+client.on(Events.SESSION, (session) => {
+  console.log(`Session established! Token: ${session.token}`);
+  // join the channel once the session is ready
   client.join(botName, botPass, channel);
 });
 
-// Triggered when the server assigns a session ID
-client.on('session', (session) => {
-  console.log(`Session ID: ${session.sessionID}`);
+// triggered when the client successfully joins the channel
+client.on(Events.ONLINE_SET, (data) => {
+  client.say(data.channel, 'Hello world! I am a bot.');
 });
 
-// Triggered when the client successfully joins the channel
-client.on('channelJoined', (data) => {
-  console.log(`Joined channel: ${data.channel}`);
-  client.say(channel, 'Hello world! I am a bot.');
-});
-
-// Triggered on every new message
-client.on('message', (message) => {
-  // Ignore our own messages
-  if (message.user.isMine) return;
-
-  console.log(`[${message.channel}] ${message.user.name}: ${message.content}`);
+// triggered on every new message
+client.on(Events.NEW_MESSAGE, (message) => {
+  if (message.user.username === botName) return;
 
   if (message.content === '!ping') {
-    // Helper method to reply directly to the channel
-    message.reply('Pong!');
+    client.say(message.channel, 'Pong!');
   }
 });
 
 ```
 
+For a more in-depth example:
+
+**[./example.js](./example.js)**
 ---
 
 ## Configuration
@@ -80,12 +73,12 @@ const client = new Client({
     gateway: 'wss://hack.chat/chat-ws', // Default
     // gateway: 'ws://127.0.0.1:6060/' // For local development
   },
-  
-  // Set to true to see internal logs and raw packets
-  debug: false, 
+
+  // Set to true to see internal logs and raw packets (default: false)
+  debug: false,
 
   // If true, identifies as a bot to the server (default: true)
-  isBot: true, 
+  isBot: true,
 });
 
 ```

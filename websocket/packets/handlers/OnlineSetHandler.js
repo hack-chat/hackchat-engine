@@ -24,6 +24,7 @@ class OnlineSetHandler extends AbstractHandler {
     client.emit(Events.ONLINE_SET, {
       client,
       channel: packet.channel,
+      users: packet.users,
     });
 
     // Emit debug info

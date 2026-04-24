@@ -37,7 +37,16 @@ class User {
       * @type {string}
       * @legacy Will be array or set with multichannel patch
       */
-    this.userchannel = data.channel || 'unknown';
+    this.channel = data.channel || 'unknown';
+
+    /**
+      * The channels this user is in
+      * @type {string}
+      */
+    this.channels = new Set();
+    if (data.channel) {
+      this.channels.add(data.channel);
+    }
 
     /**
       * This users name
@@ -73,7 +82,7 @@ class User {
       * Whether or not the user is a bot
       * @type {boolean}
       */
-    this.isBot = data.isBot || false;
+    this.botting = data.isBot || false;
 
     /**
       * The Message object of the last message sent by the user, if one was sent
@@ -132,15 +141,6 @@ class User {
     * @type {string}
     * @readonly
     */
-  get channel() {
-    return this.userchannel;
-  }
-
-  /**
-    * User name
-    * @type {string}
-    * @readonly
-    */
   get name() {
     return this.username;
   }
@@ -187,7 +187,7 @@ class User {
     * @readonly
     */
   get isBot() {
-    return this.isBot;
+    return this.botting;
   }
 
   /**
@@ -259,23 +259,19 @@ class User {
     * @type {string}
     */
   updateUser(data) {
+    if (data.channel) {
+      this.channels.add(data.channel);
+    }
+
+    if (data.trip) this.usertrip = data.trip;
+    if (data.hash) this.userhash = data.hash;
+
     this.username = data.nick;
     this.userlevel = data.uType;
-    this.isBot = data.isBot;
+    this.botting = data.isBot;
     this.nickColor = data.color;
     this.flair = data.flair;
     this.permissionLevel = data.level;
-  }
-
-  /**
-    * Sets this user either online or offline
-    * @param {string} channel Channel that the user joined or left
-    * @returns {boolean}
-    */
-  // @todo Multichannel
-  toggleOnline(channel) { // eslint-disable-line no-unused-vars
-    this.online = !this.online;
-    return this.online;
   }
 
   /**
@@ -299,15 +295,16 @@ class User {
 
   /**
     * Send chat text using this user's channel
+    * @param {string} channel The specific channel to send to
     * @param {string} text Text to send
     * @returns {boolean}
     */
-  sendMessage(text) {
+  sendMessage(channel, text) {
     try {
       return new Promise((resolve) => {
         this.client.ws.send({
           cmd: OPCodes.CHAT,
-          channel: this.channel, // @todo Multichannel
+          channel,
           text,
         });
         resolve(this);
@@ -319,16 +316,17 @@ class User {
 
   /**
     * Send a whisper through this users channel to the user
+    * @param {string} channel The specific channel to send to
     * @param {string} text Text to send
     * @returns {Promise}
     */
-  sendWhisper(text) {
+  sendWhisper(channel, text) {
     try {
       return new Promise((resolve) => {
         this.client.ws.send({
           cmd: OPCodes.WHISPER,
-          channel: this.channel, // @todo Multichannel
-          userid: this.userid,
+          channel,
+          nick: this.username, /* @todo legacy should be this.userid */
           text,
         });
         resolve(this);
@@ -340,6 +338,8 @@ class User {
 
   /**
     * Send `invite` event to this user
+    * @param {string} channelName Channel name to use
+    * @param {string} to Username as string
     * @returns {void}
     */
   sendInvite(channel, to = '') {
@@ -358,6 +358,8 @@ class User {
 
   /**
     * Send `kick` operation to the server
+    * @param {string} channelName Channel name to use
+    * @param {string} to Username as string
     * @returns {void}
     */
   kick(channel, to = '') {
@@ -376,6 +378,7 @@ class User {
 
   /**
     * Send `ban` operation to the server
+    * @param {string} channelName Channel name to use
     * @returns {void}
     */
   ban(channel) {
@@ -388,6 +391,7 @@ class User {
 
   /**
     * Send `mute` operation to the server
+    * @param {string} channelName Channel name to use
     * @returns {void}
     */
   mute(channel) {
@@ -400,6 +404,7 @@ class User {
 
   /**
     * Send `unmute` operation to the server
+    * @param {string} channelName Channel name to use
     * @returns {void}
     */
   unmute(channel) {
@@ -408,6 +413,15 @@ class User {
       hash: this.userhash,
       channel,
     });
+  }
+
+  /**
+    * Is user in channel
+    * @param {string} channelName Channel name to use
+    * @returns {boolean}
+    */
+  inChannel(channelName) {
+    return this.channels.has(channelName);
   }
 
   /**

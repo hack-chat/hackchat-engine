@@ -38,7 +38,6 @@ class WarningStruct {
 
     /**
       * Channel the warning was issued from
-      * @todo Touches multi-channel patch
       * @type {string}
       */
     this.channel = data.channel;

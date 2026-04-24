@@ -150,9 +150,6 @@ class Client extends EventEmitter {
         throw new Error(Errors.INVALID_CHANNEL);
       }
 
-      // @todo: this will be changed with the multichannel patch
-      this.channel = channel;
-
       this.ws.send({
         cmd: OPCodes.JOIN,
         nick: name,
@@ -411,13 +408,13 @@ class Client extends EventEmitter {
     * Send `updateMessage` operation to the server
     * @param {string} customId The customId of the target message
     * @param {string} text The text to apply
-    * @param {string} [mode='overwrite'] The update mode:
-    *   'overwrite', 'append', 'prepend', or 'complete'
+    * @param {string} channel Target channel
+    * @param {string} [mode='overwrite|append|prepend|complete'] The update mode
     */
-  updateMessage(customId, text, mode = 'overwrite') {
+  updateMessage(customId, text, channel, mode = 'overwrite') {
     this.ws.send({
       cmd: OPCodes.UPDATE_MESSAGE,
-      channel: this.channel, // @todo Multichannel
+      channel,
       customId,
       text,
       mode,
@@ -427,11 +424,12 @@ class Client extends EventEmitter {
   /**
     * Request the public wallet address of a specific user
     * @param {number|string} target The userid (number) or nickname (string) of the user
+    * @param {string} channel Target channel
     */
-  getWallet(target) {
+  getWallet(target, channel) {
     const payload = {
       cmd: OPCodes.GET_WALLET,
-      channel: this.channel, // @todo Multichannel
+      channel,
     };
 
     if (typeof target === 'number') {
@@ -450,7 +448,7 @@ class Client extends EventEmitter {
   leave(channel) {
     this.ws.send({
       cmd: OPCodes.LEAVE,
-      channel: channel || this.channel, // @todo Multichannel
+      channel,
     });
   }
 }
