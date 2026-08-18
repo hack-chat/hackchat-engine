@@ -261,10 +261,11 @@ class User {
   updateUser(data) {
     if (data.channel) {
       this.channels.add(data.channel);
+      this.channel = data.channel;
     }
 
-    if (data.trip) this.usertrip = data.trip;
-    if (data.hash) this.userhash = data.hash;
+    if (typeof data.trip !== 'undefined') this.usertrip = data.trip;
+    if (typeof data.hash !== 'undefined') this.userhash = data.hash;
 
     this.username = data.nick;
     this.userlevel = data.uType;
