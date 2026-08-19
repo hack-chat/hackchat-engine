@@ -125,6 +125,12 @@ class User {
       * @type {number}
       */
     this.permissionLevel = data.level || false;
+
+    /**
+      * User's ui effect
+      * @type {number}
+      */
+    this.userEffect = data.effect || 0;
   }
 
   /**
@@ -254,6 +260,15 @@ class User {
   }
 
   /**
+    * User's ui effect
+    * @type {number}
+    * @readonly
+    */
+  get effect() {
+    return this.userEffect;
+  }
+
+  /**
     * Patch new user info sent from server
     * @param {object} data User object sent from server
     * @type {string}
@@ -266,6 +281,7 @@ class User {
 
     if (typeof data.trip !== 'undefined') this.usertrip = data.trip;
     if (typeof data.hash !== 'undefined') this.userhash = data.hash;
+    if (typeof data.effect !== 'undefined') this.userEffect = data.effect;
 
     this.username = data.nick;
     this.userlevel = data.uType;
