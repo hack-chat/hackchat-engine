@@ -11,10 +11,10 @@ class Emote {
     Object.defineProperty(this, 'client', { value: client });
 
     /**
-       * User who sent the emote
-       * @type {User}
-       * @readonly
-       */
+      * User who sent the emote
+      * @type {User}
+      * @readonly
+      */
     Object.defineProperty(this, 'user', { value: user });
 
     this.setup(data);

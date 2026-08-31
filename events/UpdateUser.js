@@ -14,15 +14,19 @@ class UpdateUser extends AbstractEvent {
     const { client } = this;
     const user = client.users.get(data.userid);
 
+    let targetUser = null;
+
     if (user) {
       user.updateUser(data);
+      targetUser = user;
     }
 
     if (client.myUser && client.myUser.userid === data.userid) {
       client.myUser.updateUser(data);
+      targetUser = client.myUser;
     }
 
-    return user;
+    return targetUser || user;
   }
 }
 

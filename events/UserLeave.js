@@ -1,4 +1,5 @@
 import AbstractEvent from './AbstractEvent.js';
+import { Events } from '../util/Constants.js';
 
 /**
   * This class handles an incoming `leave` event from the server
@@ -19,6 +20,9 @@ class UserLeave extends AbstractEvent {
 
       if (user.channels.size === 0) {
         user.online = false;
+        user.userEffect = 0;
+
+        client.emit(Events.USER_UPDATE, user);
       }
     }
 

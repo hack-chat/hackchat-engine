@@ -283,12 +283,12 @@ class User {
     if (typeof data.hash !== 'undefined') this.userhash = data.hash;
     if (typeof data.effect !== 'undefined') this.userEffect = data.effect;
 
-    this.username = data.nick;
-    this.userlevel = data.uType;
-    this.botting = data.isBot;
-    this.nickColor = data.color;
-    this.flair = data.flair;
-    this.permissionLevel = data.level;
+    if (typeof data.nick !== 'undefined') this.username = data.nick;
+    if (typeof data.uType !== 'undefined') this.userlevel = data.uType;
+    if (typeof data.isBot !== 'undefined') this.botting = data.isBot;
+    if (typeof data.color !== 'undefined') this.nickColor = data.color;
+    if (typeof data.flair !== 'undefined') this.flair = data.flair;
+    if (typeof data.level !== 'undefined') this.permissionLevel = data.level;
   }
 
   /**
