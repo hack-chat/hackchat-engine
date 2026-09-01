@@ -26,7 +26,10 @@ class UserLeave extends AbstractEvent {
       }
     }
 
-    return user;
+    return {
+      user,
+      channel: data.channel,
+    };
   }
 }
 
