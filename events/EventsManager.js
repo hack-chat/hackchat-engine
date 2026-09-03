@@ -16,6 +16,7 @@ import SignMessage from './SignMessage.js';
 import SignTransaction from './SignTransaction.js';
 import UpdateMessage from './UpdateMessage.js';
 import WalletInfo from './WalletInfo.js';
+import PasswordReq from './PasswordReq.js';
 
 /**
   * This class routes incoming event data to it's proper handler
@@ -46,6 +47,7 @@ class EventsManager {
     this.SignTransaction = new SignTransaction(this.client);
     this.UpdateMessage = new UpdateMessage(this.client);
     this.WalletInfo = new WalletInfo(this.client);
+    this.PasswordReq = new PasswordReq(this.client);
   }
 }
 

@@ -112,6 +112,7 @@ export const Events = {
   SIGN_TRANSACTION: 'signTransaction',
   UPDATE_MESSAGE: 'updateMessage',
   WALLET_INFO: 'walletInfo',
+  CHANNEL_PASSWORD_REQ: 'gotPasswordReq',
 };
 
 /**
@@ -137,4 +138,5 @@ export const WSEvents = {
   SIGN_TRANSACTION: 'signTransaction',
   UPDATE_MESSAGE: 'updateMessage',
   WALLET_INFO: 'walletInfo',
+  CHANNEL_PASSWORD_REQ: 'passwordreq',
 };
