@@ -29,6 +29,10 @@ const BeforeReadyWhitelist = [
   WSEvents.SESSION,
   WSEvents.ONLINE_SET,
   WSEvents.PUB_CHANS,
+  WSEvents.CHANNEL_WARN,
+  WSEvents.CHANNEL_INFO,
+  WSEvents.CHANNEL_CAPTCHA,
+  WSEvents.CHANNEL_PASSWORD_REQ,
 ];
 
 /**
