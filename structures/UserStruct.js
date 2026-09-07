@@ -106,7 +106,7 @@ class User {
       * Is this the current users record
       * @type {boolean}
       */
-    this.mine = data.isme || false;
+    this.mine = data.isme || (this.client.myUser ? this.client.myUser.userid === this.userid : false);
 
     /**
       * User's color
@@ -282,13 +282,16 @@ class User {
     if (typeof data.trip !== 'undefined') this.usertrip = data.trip;
     if (typeof data.hash !== 'undefined') this.userhash = data.hash;
     if (typeof data.effect !== 'undefined') this.userEffect = data.effect;
-
     if (typeof data.nick !== 'undefined') this.username = data.nick;
     if (typeof data.uType !== 'undefined') this.userlevel = data.uType;
     if (typeof data.isBot !== 'undefined') this.botting = data.isBot;
     if (typeof data.color !== 'undefined') this.nickColor = data.color;
     if (typeof data.flair !== 'undefined') this.flair = data.flair;
     if (typeof data.level !== 'undefined') this.permissionLevel = data.level;
+
+    if (!this.mine && this.client.myUser && this.client.myUser.userid === this.userid) {
+      this.mine = true;
+    }
   }
 
   /**
