@@ -106,7 +106,8 @@ class User {
       * Is this the current users record
       * @type {boolean}
       */
-    this.mine = data.isme || (this.client.myUser ? this.client.myUser.userid === this.userid : false);
+    this.mine = data.isme
+      || (this.client.myUser ? this.client.myUser.userid === this.userid : false);
 
     /**
       * User's color
