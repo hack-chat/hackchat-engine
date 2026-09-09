@@ -30,6 +30,18 @@ class Information {
       * @type {string}
       */
     this.channel = data.channel;
+
+    /**
+      * Numeric reason for the info
+      * @type {number}
+      */
+    this.id = data.id || 0;
+
+    /**
+      * The translation arguments
+      * @type {string}
+      */
+    this.args = data.args || {};
   }
 }
 

@@ -41,6 +41,12 @@ class WarningStruct {
       * @type {string}
       */
     this.channel = data.channel;
+
+    /**
+      * The translation arguments
+      * @type {string}
+      */
+    this.args = data.args || {};
   }
 }
 
