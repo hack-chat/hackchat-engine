@@ -138,9 +138,10 @@ class Client extends EventEmitter {
     * @param {string} name Name to join with
     * @param {string} password Optional password to create trip code
     * @param {string} channel Channel to join
+    * @param {string|boolean} color Optional hex color for initial join
     * @returns {void}
     */
-  join(name = false, password = '', channel = false) {
+  join(name = false, password = '', channel = false, color = false) {
     try {
       if (!name || typeof name !== 'string') {
         throw new Error(Errors.INVALID_NAME);
@@ -150,12 +151,18 @@ class Client extends EventEmitter {
         throw new Error(Errors.INVALID_CHANNEL);
       }
 
-      this.ws.send({
+      const payload = {
         cmd: OPCodes.JOIN,
         nick: name,
         pass: password,
         channel,
-      });
+      };
+
+      if (color) {
+        payload.color = color;
+      }
+
+      this.ws.send(payload);
     } catch (e) {
       this.destroy();
       this.emit(Events.ERROR, `[client] Error joining channel: ${e}`);
