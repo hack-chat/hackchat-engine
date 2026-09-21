@@ -375,15 +375,20 @@ class Client extends EventEmitter {
   }
 
   /**
-    * Sends a Solana signature and the signed message back to the server for verification
-    * @param {string} signature The base64 or hex encoded signature from the client's wallet
-    * @param {string} signedMessage The original human-readable message that was signed
+    * Sends a Solana signature request to the server for authentication
+    * @param {string} wallet The name of the wallet provider (e.g., 'Phantom')
+    * @param {string} address The public key of the connecting wallet
+    * @param {string} [domain] The domain requesting the signature. Optional / autodetected
     */
-  requestSiw(wallet, address) {
+  requestSiw(wallet, address, domain) {
+    const requestDomain = domain
+      || (typeof window !== 'undefined' && window.location ? window.location.host : 'hack.chat');
+
     this.ws.send({
       cmd: OPCodes.REQUEST_SIW,
       wallet,
       address,
+      domain: requestDomain,
     });
   }
 
