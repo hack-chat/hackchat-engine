@@ -21,12 +21,14 @@ class SignTransactionHandler extends AbstractHandler {
       * @param {string} payload.tx The base64 encoded transaction payload
       * @param {string} payload.type The transaction type
       * @param {string} payload.channel The channel which invoked the event
+      * @param {string} payload.imageUrl The URL of the mint image
       */
     client.emit(Events.SIGN_TRANSACTION, {
       tx: packet.tx,
       type: packet.type,
       channel: packet.channel,
       from: packet.from,
+      imageUrl: packet.imageUrl,
     });
 
     client.emit(Events.DEBUG, `[${Events.SIGN_TRANSACTION}]: signTransaction requested`);
