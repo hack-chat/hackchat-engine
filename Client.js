@@ -384,11 +384,25 @@ class Client extends EventEmitter {
     const requestDomain = domain
       || (typeof window !== 'undefined' && window.location ? window.location.host : 'hack.chat');
 
+    let locale = 'en';
+    try {
+      if (typeof navigator !== 'undefined' && navigator.language) {
+        locale = navigator.language;
+      } else if (typeof Intl !== 'undefined') {
+        locale = Intl.DateTimeFormat().resolvedOptions().locale;
+      }
+
+      locale = locale.split('-')[0].toLowerCase();
+    } catch (err) {
+      locale = 'en';
+    }
+
     this.ws.send({
       cmd: OPCodes.REQUEST_SIW,
       wallet,
       address,
       domain: requestDomain,
+      locale,
     });
   }
 
