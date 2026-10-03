@@ -16,6 +16,7 @@ class UserJoin extends AbstractEvent {
     const user = client.users.get(data.userid);
 
     if (user) {
+      user.updateUser(data);
       user.channels.add(data.channel);
       user.online = true;
       user.channel = data.channel;

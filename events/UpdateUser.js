@@ -1,4 +1,5 @@
 import AbstractEvent from './AbstractEvent.js';
+import User from '../structures/UserStruct.js';
 
 /**
   * This class handles an incoming `user update` event from the server
@@ -12,11 +13,15 @@ class UpdateUser extends AbstractEvent {
     */
   handle(data) {
     const { client } = this;
-    const user = client.users.get(data.userid);
+    let user = client.users.get(data.userid);
 
     let targetUser = null;
 
-    if (user) {
+    if (!user) {
+      user = new User(client, data);
+      client.users.set(data.userid, user);
+      targetUser = user;
+    } else {
       user.updateUser(data);
       targetUser = user;
     }
@@ -26,7 +31,7 @@ class UpdateUser extends AbstractEvent {
       targetUser = client.myUser;
     }
 
-    return targetUser || user;
+    return targetUser;
   }
 }
 
