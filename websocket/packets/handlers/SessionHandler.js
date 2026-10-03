@@ -28,6 +28,10 @@ class SessionHandler extends AbstractHandler {
 
     const response = client.events.Session.handle(packet);
 
+    if (client.myUser && packet.channels) {
+      client.myUser.channels = new Set(packet.channels);
+    }
+
     /**
       * Emitted when a session packet is received
       * @event Client#session
