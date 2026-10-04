@@ -235,19 +235,19 @@ class Client extends EventEmitter {
     * @returns {void}
     */
   sweepStaleUsers() {
-    const myChannels = this.myUser && this.myUser.channels 
-      ? Array.from(this.myUser.channels) 
+    const myChannels = this.myUser && this.myUser.channels
+      ? Array.from(this.myUser.channels)
       : [];
 
-    for (const [userid, user] of this.users) {
-      if (user.isMine) continue;
+    this.users.forEach((user, userid) => {
+      if (user.isMine) return;
 
       const sharesChannel = Array.from(user.channels).some((c) => myChannels.includes(c));
 
       if (!sharesChannel || !user.isOnline || user.channels.size === 0) {
         this.users.delete(userid);
       }
-    }
+    });
   }
 
   /**
