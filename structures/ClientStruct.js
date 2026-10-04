@@ -41,9 +41,12 @@ class ClientStruct extends User {
     * client.user.setUsername('NewNick');
     */
   changeUsername(username) {
+    const targetChannel = this.channels.values().next().value || '';
+
     const payload = {
       cmd: OPCodes.CHANGE_NICK,
       nick: username,
+      channel: targetChannel,
     };
 
     this.client.ws.send(payload);
