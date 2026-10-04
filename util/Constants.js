@@ -79,6 +79,8 @@ export const OPCodes = {
   CONFIRM_TX: 'confirmtx',
   UPDATE_MESSAGE: 'updateMessage',
   GET_WALLET: 'getwallet',
+  GET_CHANNELS: 'getchannels',
+  DISCONNECT_WALLET: 'disconnectwallet',
 };
 
 /**

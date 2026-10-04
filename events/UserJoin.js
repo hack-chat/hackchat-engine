@@ -15,18 +15,24 @@ class UserJoin extends AbstractEvent {
     const { client } = this;
     const user = client.users.get(data.userid);
 
+    let targetUser;
+
     if (user) {
       user.updateUser(data);
       user.channels.add(data.channel);
       user.online = true;
       user.channel = data.channel;
-      return user;
+      targetUser = user;
+    } else {
+      const newUser = new User(client, data);
+      newUser.channel = data.channel;
+      client.users.set(data.userid, newUser);
+      targetUser = newUser;
     }
 
-    const newUser = new User(client, data);
-    newUser.channel = data.channel;
-    client.users.set(data.userid, newUser);
-    return newUser;
+    client.sweepStaleUsers();
+
+    return targetUser;
   }
 }
 

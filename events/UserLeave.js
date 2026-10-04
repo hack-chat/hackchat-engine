@@ -26,6 +26,8 @@ class UserLeave extends AbstractEvent {
       }
     }
 
+    client.sweepStaleUsers();
+
     return {
       user,
       channel: data.channel,

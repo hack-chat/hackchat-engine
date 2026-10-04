@@ -231,6 +231,26 @@ class Client extends EventEmitter {
   }
 
   /**
+    * Prunes offline/stale users from the internal cache to prevent memory leaks
+    * @returns {void}
+    */
+  sweepStaleUsers() {
+    const myChannels = this.myUser && this.myUser.channels 
+      ? Array.from(this.myUser.channels) 
+      : [];
+
+    for (const [userid, user] of this.users) {
+      if (user.isMine) continue;
+
+      const sharesChannel = Array.from(user.channels).some((c) => myChannels.includes(c));
+
+      if (!sharesChannel || !user.isOnline || user.channels.size === 0) {
+        this.users.delete(userid);
+      }
+    }
+  }
+
+  /**
     * Create a managed timeout
     * @param {Function} func Target function to call
     * @param {number} delay Wait time before calling func (in ms)
@@ -475,6 +495,24 @@ class Client extends EventEmitter {
     this.ws.send({
       cmd: OPCodes.LEAVE,
       channel,
+    });
+  }
+
+  /**
+    * Request public channel list
+    */
+  getChannels() {
+    this.ws.send({
+      cmd: OPCodes.GET_CHANNELS,
+    });
+  }
+
+  /**
+    * Request wallet disconnection
+    */
+  disconnectWallet() {
+    this.ws.send({
+      cmd: OPCodes.DISCONNECT_WALLET,
     });
   }
 }
