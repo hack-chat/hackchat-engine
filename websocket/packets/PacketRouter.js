@@ -35,6 +35,20 @@ const BeforeReadyWhitelist = [
   WSEvents.CHANNEL_PASSWORD_REQ,
 ];
 
+const RequiresChannelPresence = [
+  WSEvents.NEW_MESSAGE,
+  WSEvents.CHANNEL_EMOTE,
+  WSEvents.UPDATE_MESSAGE,
+  WSEvents.USER_JOIN,
+  WSEvents.USER_LEAVE,
+  WSEvents.USER_UPDATE,
+  WSEvents.CHANNEL_WHISPER,
+  WSEvents.CHANNEL_INVITE,
+  WSEvents.HACK_ATTEMPT,
+  WSEvents.SIGN_TRANSACTION,
+  WSEvents.WALLET_INFO,
+];
+
 /**
   * Routes packet data to the appropriate handler
   * @private
@@ -143,6 +157,15 @@ class PacketRouter {
     if (this.ws.status !== Status.READY) {
       if (BeforeReadyWhitelist.indexOf(packet.cmd) === -1) {
         this.queue.push(packet);
+        return false;
+      }
+    }
+
+    if (packet.channel && RequiresChannelPresence.includes(packet.cmd)) {
+      const myChannels = this.client.myUser && this.client.myUser.channels;
+
+      if (!myChannels || !myChannels.has(packet.channel)) {
+        this.client.emit(Events.DEBUG, `[router] Dropped isolated '${packet.cmd}' event for unjoined channel: ${packet.channel}`);
         return false;
       }
     }
